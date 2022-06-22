@@ -1,2 +1,5 @@
 # Ignore hidden directory idea
 .idea
+
+# Ignore package node_modules
+node_modules/
