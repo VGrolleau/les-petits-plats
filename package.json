@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "TAILWIND_MODE=WATCH postcss ./css/style.css -o ./dist/style.css --watch --verbose"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.7",
-    "postcss": "^8.4.14"
+    "postcss": "^8.4.14",
+    "postcss-cli": "^9.1.0"
   }
 }
