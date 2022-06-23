@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
 /*
 ! tailwindcss v3.1.4 | MIT License | https://tailwindcss.com
-*//*
+*/
+
+/*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
@@ -336,6 +340,7 @@ button,
 /*
 Make sure disabled buttons don't get the pointer cursor.
 */
+
 :disabled {
   cursor: default;
 }
@@ -368,7 +373,11 @@ video {
   height: auto;
 }
 
-*, ::before, ::after {
+html {
+        font-family: 'Lato', sans-serif;
+    }
+
+*, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -415,7 +424,7 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-::-webkit-backdrop {
+::-webkit-backdrop{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -462,7 +471,7 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-::backdrop {
+::backdrop{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -508,136 +517,106 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
-.absolute {
+.absolute{
   position: absolute;
 }
-.relative {
+.relative{
   position: relative;
 }
-.right-6 {
+.right-6{
   right: 1.5rem;
 }
-.mx-auto {
+.mx-auto{
   margin-left: auto;
   margin-right: auto;
 }
-.mx-\[10\%\] {
+.mx-\[10\%\]{
   margin-left: 10%;
   margin-right: 10%;
 }
-.my-6 {
+.my-6{
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
-.mt-10 {
+.mt-10{
   margin-top: 2.5rem;
 }
-.mb-5 {
+.mb-5{
   margin-bottom: 1.25rem;
 }
-.mt-4 {
+.mt-4{
   margin-top: 1rem;
 }
-.flex {
+.flex{
   display: flex;
 }
-.grid {
+.grid{
   display: grid;
 }
-.w-64 {
+.w-64{
   width: 16rem;
 }
-.w-\[80\%\] {
+.w-\[80\%\]{
   width: 80%;
 }
-.w-full {
+.w-full{
   width: 100%;
 }
-.grid-cols-3 {
+.grid-cols-8{
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+.grid-cols-3{
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-.items-center {
+.items-center{
   align-items: center;
 }
-.gap-\[50px\] {
-  gap: 50px;
+.gap-5{
+  gap: 1.25rem;
 }
-.gap-\[100px\] {
-  gap: 100px;
-}
-.gap-x-\[100px\] {
-  -moz-column-gap: 100px;
-       column-gap: 100px;
-}
-.gap-y-\[50px\] {
-  row-gap: 50px;
-}
-.gap-x-28 {
-  -moz-column-gap: 7rem;
-       column-gap: 7rem;
-}
-.gap-y-12 {
-  row-gap: 3rem;
-}
-.gap-y-14 {
-  row-gap: 3.5rem;
-}
-.gap-x-32 {
-  -moz-column-gap: 8rem;
-       column-gap: 8rem;
-}
-.gap-x-36 {
-  -moz-column-gap: 9rem;
-       column-gap: 9rem;
-}
-.gap-x-40 {
-  -moz-column-gap: 10rem;
-       column-gap: 10rem;
-}
-.gap-x-44 {
+.gap-x-44{
   -moz-column-gap: 11rem;
        column-gap: 11rem;
 }
-.gap-y-20 {
+.gap-y-20{
   row-gap: 5rem;
 }
-.rounded {
+.rounded{
   border-radius: 0.25rem;
 }
-.border-none {
+.border-none{
   border-style: none;
 }
-.bg-\[\#E7E7E7\] {
+.bg-\[\#E7E7E7\]{
   --tw-bg-opacity: 1;
   background-color: rgb(231 231 231 / var(--tw-bg-opacity));
 }
-.bg-\[\#3282F7\] {
+.bg-\[\#3282F7\]{
   --tw-bg-opacity: 1;
   background-color: rgb(50 130 247 / var(--tw-bg-opacity));
 }
-.bg-\[\#68D9A4\] {
+.bg-\[\#68D9A4\]{
   --tw-bg-opacity: 1;
   background-color: rgb(104 217 164 / var(--tw-bg-opacity));
 }
-.bg-\[\#ED6454\] {
+.bg-\[\#ED6454\]{
   --tw-bg-opacity: 1;
   background-color: rgb(237 100 84 / var(--tw-bg-opacity));
 }
-.p-6 {
+.p-6{
   padding: 1.5rem;
 }
 
-.custom-select {
+.custom-select{
   position: relative;
-  margin-right: 1.25rem;
   border-radius: 0.25rem;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.order-by-btn {
+.order-by-btn{
   display: flex;
-  min-width: 170px;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   border-radius: 0.25rem;
@@ -648,17 +627,17 @@ video {
   padding-bottom: 1.5rem;
 }
 
-.order-by-btn:hover {
+.order-by-btn:hover{
   opacity: 0.6;
 }
 
-.custom-select ul {
+.custom-select ul{
   visibility: hidden;
   position: absolute;
   left: 0px;
   margin-top: -5px;
   display: flex;
-  min-width: 170px;
+  width: 11rem;
   --tw-translate-y: -10px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   list-style-type: none;
@@ -676,7 +655,7 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.custom-select li {
+.custom-select li{
   display: flex;
   height: 100%;
   width: 100%;
@@ -686,14 +665,14 @@ video {
   text-indent: 0.625rem;
 }
 
-.custom-select button:focus + ul {
+.custom-select button:focus + ul{
   pointer-events: auto;
   visibility: visible;
   --tw-translate-y: 0px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.custom-select button:focus .select-arrow {
+.custom-select button:focus .select-arrow{
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   transition-property: transform;
@@ -701,24 +680,68 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.select-arrow {
+.select-arrow{
   transition-property: transform;
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.recipe-card {
+.recipe-card{
   border-radius: 0.25rem;
   --tw-bg-opacity: 1;
   background-color: rgb(231 231 231 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-\[\#68D9A4\]:hover {
+.recipe-card img{
+  height: 11rem;
+  width: 100%;
+  flex: 1 1 0%;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.recipe-content{
+  padding: 1.25rem;
+}
+
+.recipe-title-time, 
+.recipe-ingredients-description{
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-by-btn, 
+.recipe-title, 
+.recipe-time{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.recipe-ingredients-description{
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.order-by-btn, 
+.recipe-time, 
+.ingredient{
+  font-weight: 700;
+}
+
+.ingredients, 
+.description{
+  width: 50%;
+}
+
+.hover\:bg-\[\#68D9A4\]:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(104 217 164 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-\[\#ED6454\]:hover {
+.hover\:bg-\[\#ED6454\]:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(237 100 84 / var(--tw-bg-opacity));
 }
