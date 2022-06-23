@@ -3,20 +3,33 @@
 @tailwind utilities;
 
 .custom-select {
-    margin-right: 20px;
-    color: white;
-    border-radius: 5px;
+    @apply relative mr-5 text-white rounded;
 }
 
 .order-by-btn {
-    padding: 25px 20px;
-    width: 170px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 5px;
+    @apply px-5 py-6 min-w-[170px] flex justify-between items-center rounded bg-inherit;
 }
 
 .order-by-btn:hover {
-    background-color: inherit;
+    @apply opacity-60;
+}
+
+.custom-select ul {
+    @apply bg-inherit px-5 py-6 -mt-[5px] absolute flex justify-around flex-col items-center min-w-[170px] left-0 list-none rounded -translate-y-[10px] transition-all duration-500 ease-in-out invisible;
+}
+
+.custom-select li {
+    @apply w-full h-full flex justify-start items-center cursor-pointer indent-2.5;
+}
+
+.custom-select button:focus + ul {
+    @apply visible pointer-events-auto translate-y-0;
+}
+
+.custom-select button:focus .select-arrow {
+    @apply rotate-180 transition-transform duration-500 ease-in-out;
+}
+
+.select-arrow {
+    @apply transition-transform duration-500 ease-in-out;
 }
