@@ -1,0 +1,27 @@
+{
+  "name": "les-petits-plats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "TAILWIND_MODE=WATCH postcss ./css/style.css -o ./dist/style.css --watch --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VGrolleau/les-petits-plats.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VGrolleau/les-petits-plats/issues"
+  },
+  "homepage": "https://github.com/VGrolleau/les-petits-plats#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.1.4"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "postcss-cli": "^9.1.0"
+  }
+}

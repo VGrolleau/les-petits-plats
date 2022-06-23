@@ -2,13 +2,227 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les petits plats</title>
+	<meta charset="UTF-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>Les petits plats</title>
+	<link href="dist/style.css" rel="stylesheet">
+	<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+	      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+	      referrerpolicy="no-referrer" rel="stylesheet"/>
 </head>
 
 <body>
+
+<img alt="" class="relative mx-auto mt-10 mb-5 w-64" src="assets/images/logo-petits-plats.png">
+
+<div class="relative w-[80%] mx-[10%] rounded bg-[#E7E7E7] flex items-center">
+	<input class="w-full rounded bg-[#E7E7E7] p-6 border-none" id="search-bar" name="search-bar"
+	       placeholder="Rechercher une recette" type="search">
+	<label class="absolute right-6 z-1" for="search-bar"><i class="fa-solid fa-magnifying-glass"></i></label>
+</div>
+
+<div class="custom-select-group w-[80%] mx-[10%] mt-4 grid grid-cols-8 gap-5">
+	<div class="custom-select bg-[#3282F7]">
+		<button class="order-by-btn">
+			<span>Ingrédients :</span>
+			<span class="fa-solid fa-angle-down select-arrow"></span>
+		</button>
+		<ul>
+			<li class="order-by-li"></li>
+		</ul>
+	</div>
+
+	<div class="custom-select bg-[#68D9A4] hover:bg-[#68D9A4]">
+		<button class="order-by-btn">
+			<span>Appareils :</span>
+			<span class="fa-solid fa-angle-down select-arrow"></span>
+		</button>
+		<ul>
+			<li class="order-by-li"></li>
+		</ul>
+	</div>
+
+	<div class="custom-select bg-[#ED6454] hover:bg-[#ED6454]">
+		<button class="order-by-btn">
+			<span>Ustensiles :</span>
+			<span class="fa-solid fa-angle-down select-arrow"></span>
+		</button>
+		<ul>
+			<li class="order-by-li"></li>
+		</ul>
+	</div>
+</div>
+
+<section class="recipes-section w-[80%] mx-[10%] my-6 grid grid-cols-3 gap-x-44 gap-y-20">
+	<article class="recipe-card">
+		<img alt="" src="https://picsum.photos/400?random=1">
+
+		<div class="recipe-content">
+			<div class="recipe-title-time">
+				<h2 class="recipe-title">Titre</h2>
+
+				<p class="recipe-time">
+					<i class="fa-regular fa-clock"></i> <span class="time">10</span> min
+				</p>
+			</div>
+
+			<div class="recipe-ingredients-description">
+				<ul class="ingredients">
+					<li><span class="ingredient">Ingrédient 1</span> : <span class="quantity">400</span> <span class="unit">ml</span></li>
+					<li><span class="ingredient">Ingrédient 2</span> : <span class="quantity">2</span> <span class="unit"></span></li>
+					<li><span class="ingredient">Ingrédient 3</span> : <span class="quantity">4</span> <span class="unit">cuillères</span></li>
+					<li><span class="ingredient">Ingrédient 4</span> : <span class="quantity">20</span> <span class="unit">g</span></li>
+					<li><span class="ingredient">Ingrédient 5</span> : <span class="quantity">2</span> <span class="unit"></span></li>
+				</ul>
+
+				<p class="description">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien.
+				</p>
+			</div>
+		</div>
+	</article>
+
+	<article class="recipe-card">
+		<img alt="" src="https://picsum.photos/400?random=2">
+
+		<div class="recipe-content">
+			<div class="recipe-title-time">
+				<h2 class="recipe-title">Titre</h2>
+
+				<p class="recipe-time">
+					<i class="fa-regular fa-clock"></i> <span class="time">10</span> min
+				</p>
+			</div>
+
+			<div class="recipe-ingredients-description">
+				<ul class="ingredients">
+					<li><span class="ingredient">Ingrédient 1</span> : <span class="quantity">400</span> <span class="unit">ml</span></li>
+					<li><span class="ingredient">Ingrédient 2</span> : <span class="quantity">2</span> <span class="unit"></span></li>
+					<li><span class="ingredient">Ingrédient 3</span> : <span class="quantity">4</span> <span class="unit">cuillères</span></li>
+					<li><span class="ingredient">Ingrédient 4</span> : <span class="quantity">20</span> <span class="unit">g</span></li>
+					<li><span class="ingredient">Ingrédient 5</span> : <span class="quantity">2</span> <span class="unit"></span></li>
+				</ul>
+
+				<p class="description">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.
+				</p>
+			</div>
+		</div>
+	</article>
+
+	<article class="recipe-card">
+		<img alt="" src="https://picsum.photos/400?random=3">
+
+		<div class="recipe-content">
+			<div class="recipe-title-time">
+				<h2 class="recipe-title">Titre</h2>
+
+				<p class="recipe-time">
+					<i class="fa-regular fa-clock"></i> <span class="time">10</span> min
+				</p>
+			</div>
+
+			<div class="recipe-ingredients-description">
+				<ul class="ingredients">
+					<li><span class="ingredient">Ingrédient 1</span> : <span class="quantity">400</span> <span class="unit">ml</span></li>
+					<li><span class="ingredient">Ingrédient 2</span> : <span class="quantity">2</span> <span class="unit"></span></li>
+					<li><span class="ingredient">Ingrédient 3</span> : <span class="quantity">4</span> <span class="unit">cuillères</span></li>
+					<li><span class="ingredient">Ingrédient 4</span> : <span class="quantity">20</span> <span class="unit">g</span></li>
+					<li><span class="ingredient">Ingrédient 5</span> : <span class="quantity">2</span> <span class="unit"></span></li>
+				</ul>
+
+				<p class="description">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus.
+				</p>
+			</div>
+		</div>
+	</article>
+
+	<article class="recipe-card">
+		<img alt="" src="https://picsum.photos/400?random=4">
+
+		<div class="recipe-content">
+			<div class="recipe-title-time">
+				<h2 class="recipe-title">Titre</h2>
+
+				<p class="recipe-time">
+					<i class="fa-regular fa-clock"></i> <span class="time">10</span> min
+				</p>
+			</div>
+
+			<div class="recipe-ingredients-description">
+				<ul class="ingredients">
+					<li><span class="ingredient">Ingrédient 1</span> : <span class="quantity">400</span> <span class="unit">ml</span></li>
+					<li><span class="ingredient">Ingrédient 2</span> : <span class="quantity">2</span> <span class="unit"></span></li>
+					<li><span class="ingredient">Ingrédient 3</span> : <span class="quantity">4</span> <span class="unit">cuillères</span></li>
+					<li><span class="ingredient">Ingrédient 4</span> : <span class="quantity">20</span> <span class="unit">g</span></li>
+					<li><span class="ingredient">Ingrédient 5</span> : <span class="quantity">2</span> <span class="unit"></span></li>
+				</ul>
+
+				<p class="description">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				</p>
+			</div>
+		</div>
+	</article>
+
+	<article class="recipe-card">
+		<img alt="" src="https://picsum.photos/400?random=5">
+
+		<div class="recipe-content">
+			<div class="recipe-title-time">
+				<h2 class="recipe-title">Titre</h2>
+
+				<p class="recipe-time">
+					<i class="fa-regular fa-clock"></i> <span class="time">10</span> min
+				</p>
+			</div>
+
+			<div class="recipe-ingredients-description">
+				<ul class="ingredients">
+					<li><span class="ingredient">Ingrédient 1</span> : <span class="quantity">400</span> <span class="unit">ml</span></li>
+					<li><span class="ingredient">Ingrédient 2</span> : <span class="quantity">2</span> <span class="unit"></span></li>
+					<li><span class="ingredient">Ingrédient 3</span> : <span class="quantity">4</span> <span class="unit">cuillères</span></li>
+					<li><span class="ingredient">Ingrédient 4</span> : <span class="quantity">20</span> <span class="unit">g</span></li>
+					<li><span class="ingredient">Ingrédient 5</span> : <span class="quantity">2</span> <span class="unit"></span></li>
+				</ul>
+
+				<p class="description">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.
+				</p>
+			</div>
+		</div>
+	</article>
+
+	<article class="recipe-card">
+		<img alt="" src="https://picsum.photos/400?random=6">
+
+		<div class="recipe-content">
+			<div class="recipe-title-time">
+				<h2 class="recipe-title">Titre</h2>
+
+				<p class="recipe-time">
+					<i class="fa-regular fa-clock"></i> <span class="time">10</span> min
+				</p>
+			</div>
+
+			<div class="recipe-ingredients-description">
+				<ul class="ingredients">
+					<li><span class="ingredient">Ingrédient 1</span> : <span class="quantity">400</span> <span class="unit">ml</span></li>
+					<li><span class="ingredient">Ingrédient 2</span> : <span class="quantity">2</span> <span class="unit"></span></li>
+					<li><span class="ingredient">Ingrédient 3</span> : <span class="quantity">4</span> <span class="unit">cuillères</span></li>
+					<li><span class="ingredient">Ingrédient 4</span> : <span class="quantity">20</span> <span class="unit">g</span></li>
+					<li><span class="ingredient">Ingrédient 5</span> : <span class="quantity">2</span> <span class="unit"></span></li>
+				</ul>
+
+				<p class="description">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien.
+				</p>
+			</div>
+		</div>
+	</article>
+</section>
 
 </body>
 
