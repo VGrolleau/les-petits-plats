@@ -79,3 +79,7 @@
 .description {
     @apply w-[50%];
 }
+
+.description {
+    @apply text-justify;
+}

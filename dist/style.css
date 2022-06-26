@@ -736,6 +736,10 @@ html {
   width: 50%;
 }
 
+.description{
+  text-align: justify;
+}
+
 .hover\:bg-\[\#68D9A4\]:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(104 217 164 / var(--tw-bg-opacity));
