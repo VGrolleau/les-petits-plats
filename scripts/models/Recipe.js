@@ -9,7 +9,6 @@ class Recipe {
         this.appliance = data.appliance;
         this.ustensils = data.ustensils;
         this.img = `https://picsum.photos/400?random=${this.idRecipe}`;
-        this.ingredientsNames = [];
     }
 
     getRecipe() {
@@ -55,7 +54,6 @@ class Recipe {
                 ingredientLi.innerHTML = `<span class="ingredient">${ingredient.ingredient}</span> : <span class="quantity">${ingredient.quantity}</span> <span class="unit">${ingredient.unit}</span>`;
             }
             ingredients.appendChild(ingredientLi);
-            this.ingredientsNames.push(ingredient.ingredient);
         });
 
         const description = document.createElement('p');
