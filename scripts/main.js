@@ -26,14 +26,12 @@ function principalSearch(event) {
             }
             return element.name.toLowerCase().includes(searchedString) || element.description.toLowerCase().includes(searchedString);
         });
-        console.log(searchedArray.length)
-        if (searchedArray.length>0) {
+        if (searchedArray.length > 0) {
+            recipesSection.classList.add("grid-cols-3", "gap-x-44", "gap-y-20");
             displayData(searchedArray);
         } else {
-            const noRecipeDiv = document.createElement('div');
-            noRecipeDiv.classList.add("no-recipe-div", "w-[80%]", "mx-[10%]", "mt-4");
-            noRecipeDiv.textContent = "Aucune recette ne correspond à votre recherche... Vous pouvez chercher « tarte aux pommes », « poisson », etc...";
-            recipesSection.before(noRecipeDiv);
+            recipesSection.classList.remove("grid-cols-3", "gap-x-44", "gap-y-20");
+            recipesSection.textContent = "Aucune recette ne correspond à votre recherche... Vous pouvez chercher « tarte aux pommes », « poisson », etc...";
         }
     } else {
         displayData(recipes);
