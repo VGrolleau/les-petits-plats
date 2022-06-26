@@ -16,16 +16,20 @@ searchInput.addEventListener("input", principalSearch);
 function principalSearch(event) {
     recipesSection.innerHTML = "";
     const searchedString = event.target.value.toLowerCase();
-    const searchedArray = recipes.filter(element => {
-        for (const ingredient of element.ingredients) {
-            if (ingredient.ingredient.toLowerCase().includes(searchedString)) {
-                return ingredient.ingredient;
-            }
-        }
-        return element.name.toLowerCase().includes(searchedString) || element.description.toLowerCase().includes(searchedString);
-    });
 
-    displayData(searchedArray);
+    if (searchedString.length >= 3) {
+        const searchedArray = recipes.filter(element => {
+            for (const ingredient of element.ingredients) {
+                if (ingredient.ingredient.toLowerCase().includes(searchedString)) {
+                    return ingredient.ingredient;
+                }
+            }
+            return element.name.toLowerCase().includes(searchedString) || element.description.toLowerCase().includes(searchedString);
+        });
+        displayData(searchedArray);
+    } else {
+        displayData(recipes);
+    }
 }
 
 function init() {
