@@ -26,7 +26,15 @@ function principalSearch(event) {
             }
             return element.name.toLowerCase().includes(searchedString) || element.description.toLowerCase().includes(searchedString);
         });
-        displayData(searchedArray);
+        console.log(searchedArray.length)
+        if (searchedArray.length>0) {
+            displayData(searchedArray);
+        } else {
+            const noRecipeDiv = document.createElement('div');
+            noRecipeDiv.classList.add("no-recipe-div", "w-[80%]", "mx-[10%]", "mt-4");
+            noRecipeDiv.textContent = "Aucune recette ne correspond à votre recherche... Vous pouvez chercher « tarte aux pommes », « poisson », etc...";
+            recipesSection.before(noRecipeDiv);
+        }
     } else {
         displayData(recipes);
     }
