@@ -9,12 +9,10 @@ class Recipe {
         this.appliance = data.appliance;
         this.ustensils = data.ustensils;
         this.img = `https://picsum.photos/400?random=${this.idRecipe}`;
+        this.ingredientsNames = [];
     }
 
     getRecipe() {
-        // console.log('id :', this.idRecipe, '/', this.name, '/ portions :', this.servings, '/ ingrédients :', this.ingredients, '/', this.time, 'min / appareil :', this.appliance, '/ ustensiles :', this.ustensils);
-        // console.log(this);
-
         const recipeCard = document.createElement('article');
         recipeCard.classList.add("recipe-card");
 
@@ -57,6 +55,7 @@ class Recipe {
                 ingredientLi.innerHTML = `<span class="ingredient">${ingredient.ingredient}</span> : <span class="quantity">${ingredient.quantity}</span> <span class="unit">${ingredient.unit}</span>`;
             }
             ingredients.appendChild(ingredientLi);
+            this.ingredientsNames.push(ingredient.ingredient);
         });
 
         const description = document.createElement('p');
