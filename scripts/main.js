@@ -6,6 +6,8 @@ const ulSelectIngredients = document.getElementById("ul-select-ingredients");
 const ulSelectAppliance = document.getElementById("ul-select-appliance");
 const ulSelectUstensils = document.getElementById("ul-select-ustensils");
 let filteredIngredients = new Set();
+let filteredAppliances = new Set();
+let appliances = [];
 document.getElementById("search-bar").value = "";
 
 function displayData(recipes) {
@@ -26,6 +28,14 @@ function displayData(recipes) {
         liIngredientSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
         ulSelectIngredients.appendChild(liIngredientSelect);
     });
+
+    const filteredApplianceArray = [...filteredAppliances];
+    filteredApplianceArray.forEach(element => {
+        const liSelectAppliance = document.createElement('li');
+        liSelectAppliance.classList.add("li-select-appliance");
+        liSelectAppliance.textContent = element.charAt(0).toUpperCase() + element.slice(1);
+        ulSelectAppliance.appendChild(liSelectAppliance);
+    })
 }
 
 const searchInput = document.getElementById("search-bar");
@@ -33,6 +43,7 @@ searchInput.addEventListener("input", principalSearch);
 
 function principalSearch(event) {
     filteredIngredients = new Set();
+    filteredAppliances = new Set();
     let searchedArray;
     recipesSection.innerHTML = "";
     const searchedString = event.target.value.toLowerCase();
@@ -78,11 +89,14 @@ function getIngredientsSelect(recipe) {
     });
 }
 
-function getAppliancesSelect(appliances) {
-    const liSelectAppliance = document.createElement('li');
-    liSelectAppliance.classList.add("li-select-appliance");
-    liSelectAppliance.textContent = appliances.appliance;
-    ulSelectAppliance.appendChild(liSelectAppliance);
+function getAppliancesSelect(recipe) {
+    appliances.length = 0;
+    appliances.push(recipe.appliance);
+    console.log(recipe, appliances)
+    appliances.forEach(element => {
+        let liApplianceText = element;
+        filteredAppliances.add(liApplianceText.toLowerCase());
+    });
 }
 
 function getUstensilsSelect(ustensils) {
