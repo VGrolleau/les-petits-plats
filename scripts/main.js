@@ -7,6 +7,7 @@ const ulSelectAppliance = document.getElementById("ul-select-appliance");
 const ulSelectUstensils = document.getElementById("ul-select-ustensils");
 let filteredIngredients = new Set();
 let filteredAppliances = new Set();
+let filteredUstensils = new Set();
 let appliances = [];
 document.getElementById("search-bar").value = "";
 
@@ -35,7 +36,17 @@ function displayData(recipes) {
         liSelectAppliance.classList.add("li-select-appliance");
         liSelectAppliance.textContent = element.charAt(0).toUpperCase() + element.slice(1);
         ulSelectAppliance.appendChild(liSelectAppliance);
+    });
+
+    const filteredUstensilsArray = [...filteredUstensils];
+    filteredUstensilsArray.forEach(element => {
+        const liUstensilSelect = document.createElement('li');
+        liUstensilSelect.classList.add("li-ustensil-select");
+        liUstensilSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
+        ulSelectUstensils.appendChild(liUstensilSelect);
     })
+
+
 }
 
 const searchInput = document.getElementById("search-bar");
@@ -44,6 +55,7 @@ searchInput.addEventListener("input", principalSearch);
 function principalSearch(event) {
     filteredIngredients = new Set();
     filteredAppliances = new Set();
+    filteredUstensils = new Set();
     let searchedArray;
     recipesSection.innerHTML = "";
     const searchedString = event.target.value.toLowerCase();
@@ -92,20 +104,15 @@ function getIngredientsSelect(recipe) {
 function getAppliancesSelect(recipe) {
     appliances.length = 0;
     appliances.push(recipe.appliance);
-    console.log(recipe, appliances)
     appliances.forEach(element => {
-        let liApplianceText = element;
-        filteredAppliances.add(liApplianceText.toLowerCase());
+        filteredAppliances.add(element.toLowerCase());
     });
 }
 
-function getUstensilsSelect(ustensils) {
-    for (let i = 0; i < ustensils.ustensils.length; i++) {
-        const liUstensilSelect = document.createElement('li');
-        liUstensilSelect.classList.add("li-ustensil-select");
-        liUstensilSelect.textContent = ustensils.ustensils[i];
-        ulSelectUstensils.appendChild(liUstensilSelect);
-    }
+function getUstensilsSelect(recipe) {
+    recipe.ustensils.forEach(element => {
+        filteredUstensils.add(element.toLowerCase());
+    });
 }
 
 function init() {
