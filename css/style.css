@@ -10,6 +10,14 @@
     }
 }
 
+.selected-ingredient-div {
+    @apply w-fit mr-4 bg-inherit text-white rounded px-5 py-2 flex items-center;
+}
+
+.selected-ingredient-div i {
+    @apply ml-3;
+}
+
 .custom-select {
     @apply relative text-white rounded;
 }
@@ -20,6 +28,14 @@
 
 .order-by-btn:hover {
     @apply opacity-60;
+}
+
+.order-by-input {
+    @apply hidden justify-between items-center rounded bg-inherit w-full;
+}
+
+.order-by-input input {
+    @apply px-5 py-6 bg-inherit;
 }
 
 .custom-select ul {
@@ -34,7 +50,8 @@
     @apply visible pointer-events-auto translate-y-0;
 }
 
-.custom-select button:focus .select-arrow {
+.custom-select button:focus .select-arrow,
+.order-by-input .select-arrow {
     @apply rotate-180 transition-transform duration-500 ease-in-out;
 }
 
