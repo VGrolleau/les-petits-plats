@@ -2,10 +2,10 @@ import {recipes} from "../data/recipes.js";
 import Recipe from "./models/Recipe.js";
 
 const recipesSection = document.querySelector(".recipes-section");
+const customSelectGroup = document.querySelector(".custom-select-group");
 const ulSelectIngredients = document.getElementById("ul-select-ingredients");
 const ulSelectAppliances = document.getElementById("ul-select-appliance");
 const ulSelectUstensils = document.getElementById("ul-select-ustensils");
-const customSelectGroup = document.querySelector(".custom-select-group");
 const ingredientsInput = document.getElementById("ingredients-input");
 const appliancesInput = document.getElementById("appliances-input");
 const ustensilsInput = document.getElementById("ustensils-input");
@@ -122,6 +122,9 @@ function getUstensilsSelect(recipe) {
 }
 
 const customSelects = document.querySelectorAll(".custom-select");
+const selectionSection = document.createElement('section');
+selectionSection.classList.add("selection-section", "w-[80%]", "mx-[10%]", "mt-4", "flex");
+
 customSelects.forEach(customSelect => {
     const orderByBtn = customSelect.children[0];
     const orderByInput = customSelect.children[1];
@@ -140,97 +143,85 @@ customSelects.forEach(customSelect => {
 
         const searchedString = event.target.value.toLowerCase();
         if (searchedString.length > 0) {
-            if (inputSelect.id === "ingredients-input") {
-                filteredIngredients.forEach(ingredient => {
-                    if (ingredient.toLowerCase().includes(searchedString)) {
+            switch (inputSelect.id) {
+                case "ingredients-input":
+                    filteredIngredients.forEach(ingredient => {
+                        if (ingredient.toLowerCase().includes(searchedString)) {
+                            searchedArray.push(ingredient);
+                        }
+                    });
+                    break;
+                case "appliances-input":
+                    filteredAppliances.forEach(appliance => {
+                        if (appliance.toLowerCase().includes(searchedString)) {
+                            searchedArray.push(appliance);
+                        }
+                    });
+                    break;
+                case "ustensils-input":
+                    filteredUstensils.forEach(ustensil => {
+                        if (ustensil.toLowerCase().includes(searchedString)) {
+                            searchedArray.push(ustensil);
+                        }
+                    });
+                    break;
+            }
+        } else {
+            switch (inputSelect.id) {
+                case "ingredients-input":
+                    filteredIngredients.forEach(ingredient => {
                         searchedArray.push(ingredient);
-                    }
-                })
-            }
-
-            if (inputSelect.id === "appliances-input") {
-                filteredAppliances.forEach(appliance => {
-                    if (appliance.toLowerCase().includes(searchedString)) {
+                    });
+                    break;
+                case "appliances-input":
+                    filteredAppliances.forEach(appliance => {
                         searchedArray.push(appliance);
-                    }
-                })
-            }
-
-            if (inputSelect.id === "ustensils-input") {
-                filteredUstensils.forEach(ustensil => {
-                    if (ustensil.toLowerCase().includes(searchedString)) {
+                    });
+                    break;
+                case "ustensils-input":
+                    filteredUstensils.forEach(ustensil => {
                         searchedArray.push(ustensil);
-                    }
-                })
+                    });
+                    break;
             }
-
-            orderByUl.innerHTML = "";
-            searchedArray.forEach(element => {
-                const liSelect = document.createElement('li');
-                liSelect.classList.add("li-select");
-                liSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
-                orderByUl.appendChild(liSelect);
-            })
         }
+
+        orderByUl.innerHTML = "";
+        searchedArray.forEach(element => {
+            const liSelect = document.createElement('li');
+            liSelect.classList.add("li-select");
+            liSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
+            orderByUl.appendChild(liSelect);
+        })
     });
-})
 
-const selectionSection = document.createElement('section');
-selectionSection.classList.add("selection-section", "w-[80%]", "mx-[10%]", "mt-4", "flex");
+    orderByUl.addEventListener("click", (event) => {
+        let selectedElement = event.target.textContent;
 
-const orderByBtnIngredient = document.getElementById("btn-ingredients");
-const orderInputIngredients = document.getElementById("order-input-ingredients");
-const orderByBtnAppliance = document.getElementById("btn-appliances");
-const orderInputAppliances = document.getElementById("order-input-appliances");
-const orderByBtnUstensil = document.getElementById("btn-ustensils");
-const orderInputUstensils = document.getElementById("order-input-ustensils");
+        const selectedElementDiv = document.createElement('div');
+        selectedElementDiv.classList.add("selected-ingredient-div");
 
-ulSelectIngredients.addEventListener("click", (event) => {
-    let selectedIngredient = event.target.textContent;
+        switch (inputSelect.id) {
+            case "ingredients-input":
+                selectedElementDiv.style.backgroundColor = "#3282F7";
+                break;
+            case "appliances-input":
+                selectedElementDiv.style.backgroundColor = "#68D9A4";
+                break;
+            case "ustensils-input":
+                selectedElementDiv.style.backgroundColor = "#ED6454";
+                break;
+        }
 
-    const selectedIngredientDiv = document.createElement('div');
-    selectedIngredientDiv.classList.add("selected-ingredient-div");
-    selectedIngredientDiv.style.backgroundColor = "#3282F7";
-    selectedIngredientDiv.innerHTML = selectedIngredient + "<i class=\"fa-regular fa-circle-xmark close\"></i>";
+        selectedElementDiv.innerHTML = selectedElement + "<i class=\"fa-regular fa-circle-xmark close\"></i>";
 
-    selectionSection.appendChild(selectedIngredientDiv);
-    customSelectGroup.before(selectionSection);
+        selectionSection.appendChild(selectedElementDiv);
+        customSelectGroup.before(selectionSection);
 
-    orderByBtnIngredient.style.display = "flex";
-    orderInputIngredients.style.display = "none";
-    ulSelectIngredients.style.visibility = "hidden";
-})
-
-ulSelectAppliances.addEventListener("click", (event) => {
-    let selectedAppliance = event.target.textContent;
-
-    const selectedApplianceDiv = document.createElement('div');
-    selectedApplianceDiv.classList.add("selected-ingredient-div");
-    selectedApplianceDiv.style.backgroundColor = "#68D9A4";
-    selectedApplianceDiv.innerHTML = selectedAppliance + "<i class=\"fa-regular fa-circle-xmark close\"></i>";
-
-    selectionSection.appendChild(selectedApplianceDiv);
-    customSelectGroup.before(selectionSection);
-
-    orderByBtnAppliance.style.display = "flex";
-    orderInputAppliances.style.display = "none";
-    ulSelectAppliances.style.visibility = "hidden";
-})
-
-ulSelectUstensils.addEventListener("click", (event) => {
-    let selectedUstensil = event.target.textContent;
-
-    const selectedUstensilDiv = document.createElement('div');
-    selectedUstensilDiv.classList.add("selected-ingredient-div");
-    selectedUstensilDiv.style.backgroundColor = "#ED6454";
-    selectedUstensilDiv.innerHTML = selectedUstensil + "<i class=\"fa-regular fa-circle-xmark close\"></i>";
-
-    selectionSection.appendChild(selectedUstensilDiv);
-    customSelectGroup.before(selectionSection);
-
-    orderByBtnUstensil.style.display = "flex";
-    orderInputUstensils.style.display = "none";
-    ulSelectUstensils.style.visibility = "hidden";
+        orderByBtn.style.display = "flex";
+        orderByInput.style.display = "none";
+        orderByUl.style.visibility = "hidden";
+    })
 })
 
 selectionSection.addEventListener("click", (event) => {
