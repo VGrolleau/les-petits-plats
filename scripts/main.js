@@ -121,17 +121,71 @@ function getUstensilsSelect(recipe) {
     });
 }
 
+const customSelects = document.querySelectorAll(".custom-select");
+customSelects.forEach(customSelect => {
+    const orderByBtn = customSelect.children[0];
+    const orderByInput = customSelect.children[1];
+    const orderByUl = customSelect.children[2];
+    const inputSelect = orderByInput.children[0];
+
+    orderByBtn.addEventListener("click", () => {
+        orderByBtn.style.display = "none";
+        orderByInput.style.display = "flex";
+        inputSelect.focus();
+        orderByUl.style.visibility = "visible";
+    });
+
+    // inputSelect.addEventListener("input", (event) => {
+    //     let searchedArray = [];
+    //
+    //     const searchedString = event.target.value.toLowerCase();
+    //     if (searchedString.length > 0) {
+    //         if (filteredIngredients) {
+    //             filteredIngredients.forEach(ingredient => {
+    //                 if (ingredient.toLowerCase().includes(searchedString)) {
+    //                     searchedArray.push(ingredient);
+    //                 }
+    //             })
+    //         }
+    //
+    //         if (filteredAppliances) {
+    //             filteredAppliances.forEach(appliance => {
+    //                 if (appliance.toLowerCase().includes(searchedString)) {
+    //                     searchedArray.push(appliance);
+    //                 }
+    //             })
+    //         }
+    //
+    //         if (filteredUstensils) {
+    //             filteredUstensils.forEach(ustensil => {
+    //                 if (ustensil.toLowerCase().includes(searchedString)) {
+    //                     searchedArray.push(ustensil);
+    //                 }
+    //             })
+    //         }
+    //
+    //         orderByUl.innerHTML = "";
+    //         searchedArray.forEach(element => {
+    //             const liSelect = document.createElement('li');
+    //             liSelect.classList.add("li-select");
+    //             liSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
+    //             orderByUl.appendChild(liSelect);
+    //         })
+    //     }
+    // });
+})
+
 const orderByBtnIngredient = document.getElementById("btn-ingredients");
 const orderInputIngredients = document.getElementById("order-input-ingredients");
 
-orderByBtnIngredient.addEventListener("focusin", () => {
-    orderByBtnIngredient.style.display = "none";
-    orderInputIngredients.style.display = "flex";
-
-    ingredientsInput.focus();
-
-    ulSelectIngredients.style.visibility = "visible";
-})
+// orderByBtnIngredient.addEventListener("focusin", () => {
+//     // orderByBtnIngredient.style.display = "none";
+//     // orderInputIngredients.style.display = "flex";
+//
+//     // ingredientsInput.focus();
+//
+//     // ulSelectIngredients.style.visibility = "visible";
+// })
 
 ingredientsInput.addEventListener("input", (event) => {
     let searchedIngredientsArray = [];
@@ -157,14 +211,14 @@ ingredientsInput.addEventListener("input", (event) => {
 const orderByBtnAppliance = document.getElementById("btn-appliances");
 const orderInputAppliances = document.getElementById("order-input-appliances");
 
-orderByBtnAppliance.addEventListener("focusin", () => {
-    orderByBtnAppliance.style.display = "none";
-    orderInputAppliances.style.display = "flex";
-
-    appliancesInput.focus();
-
-    ulSelectAppliances.style.visibility = "visible";
-})
+// orderByBtnAppliance.addEventListener("focusin", () => {
+//     // orderByBtnAppliance.style.display = "none";
+//     // orderInputAppliances.style.display = "flex";
+//
+//     // appliancesInput.focus();
+//
+//     // ulSelectAppliances.style.visibility = "visible";
+// })
 
 appliancesInput.addEventListener("input", (event) => {
     let searchedAppliancesArray = [];
@@ -190,14 +244,14 @@ appliancesInput.addEventListener("input", (event) => {
 const orderByBtnUstensil = document.getElementById("btn-ustensils");
 const orderInputUstensils = document.getElementById("order-input-ustensils");
 
-orderByBtnUstensil.addEventListener("focusin", () => {
-    orderByBtnUstensil.style.display = "none";
-    orderInputUstensils.style.display = "flex";
-
-    ustensilsInput.focus();
-
-    ulSelectUstensils.style.visibility = "visible";
-})
+// orderByBtnUstensil.addEventListener("focusin", () => {
+//     // orderByBtnUstensil.style.display = "none";
+//     // orderInputUstensils.style.display = "flex";
+//
+//     // ustensilsInput.focus();
+//
+//     // ulSelectUstensils.style.visibility = "visible";
+// })
 
 ustensilsInput.addEventListener("input", (event) => {
     let searchedUstensilsArray = [];
