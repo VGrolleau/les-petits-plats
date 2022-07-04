@@ -124,6 +124,7 @@ function getUstensilsSelect(recipe) {
 const customSelects = document.querySelectorAll(".custom-select");
 const selectionSection = document.createElement('section');
 selectionSection.classList.add("selection-section", "w-[80%]", "mx-[10%]", "mt-4", "flex");
+const selectionSectionElements = [];
 
 customSelects.forEach(customSelect => {
     const orderByBtn = customSelect.children[0];
@@ -138,8 +139,8 @@ customSelects.forEach(customSelect => {
         orderByUl.style.visibility = "visible";
     });
 
-    window.addEventListener('mouseup', function(event){
-        if (event.target !== orderByBtn && event.target.parentNode !== orderByBtn){
+    window.addEventListener('mouseup', function (event) {
+        if (event.target !== orderByBtn && event.target.parentNode !== orderByBtn) {
             orderByBtn.style.display = "flex";
             orderByInput.style.display = "none";
             orderByUl.style.visibility = "hidden";
@@ -207,7 +208,7 @@ customSelects.forEach(customSelect => {
         let selectedElement = event.target.textContent;
 
         const selectedElementDiv = document.createElement('div');
-        selectedElementDiv.classList.add("selected-ingredient-div");
+        selectedElementDiv.classList.add("selected-div");
 
         switch (inputSelect.id) {
             case "ingredients-input":
@@ -226,6 +227,8 @@ customSelects.forEach(customSelect => {
         selectionSection.appendChild(selectedElementDiv);
         customSelectGroup.before(selectionSection);
 
+        selectionSectionElements.push(selectedElement);
+
         orderByBtn.style.display = "flex";
         orderByInput.style.display = "none";
         orderByUl.style.visibility = "hidden";
@@ -234,8 +237,13 @@ customSelects.forEach(customSelect => {
 
 selectionSection.addEventListener("click", (event) => {
     if (event.target.className === "fa-regular fa-circle-xmark close") {
+        const index = selectionSectionElements.indexOf(event.target.parentNode.textContent);
+        if (index > -1) {
+            selectionSectionElements.splice(index, 1);
+        }
         event.target.parentNode.style.display = "none";
     }
+    console.log(selectionSectionElements);
 });
 
 function init() {

@@ -10,11 +10,11 @@
     }
 }
 
-.selected-ingredient-div {
+.selected-div {
     @apply w-fit mr-5 bg-inherit text-white rounded px-5 py-2 flex items-center;
 }
 
-.selected-ingredient-div i {
+.selected-div i {
     @apply ml-3;
 }
 

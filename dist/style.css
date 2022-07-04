@@ -601,7 +601,7 @@ html {
   padding: 1.5rem;
 }
 
-.selected-ingredient-div{
+.selected-div{
   margin-right: 1.25rem;
   display: flex;
   width: -webkit-fit-content;
@@ -618,7 +618,7 @@ html {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.selected-ingredient-div i{
+.selected-div i{
   margin-left: 0.75rem;
 }
 
