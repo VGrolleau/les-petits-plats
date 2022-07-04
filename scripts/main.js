@@ -138,6 +138,14 @@ customSelects.forEach(customSelect => {
         orderByUl.style.visibility = "visible";
     });
 
+    window.addEventListener('mouseup', function(event){
+        if (event.target !== orderByBtn && event.target.parentNode !== orderByBtn){
+            orderByBtn.style.display = "flex";
+            orderByInput.style.display = "none";
+            orderByUl.style.visibility = "hidden";
+        }
+    });
+
     inputSelect.addEventListener("input", (event) => {
         let searchedArray = [];
 
