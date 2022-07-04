@@ -11,7 +11,7 @@
 }
 
 .selected-ingredient-div {
-    @apply w-fit mr-4 bg-inherit text-white rounded px-5 py-2 flex items-center;
+    @apply w-fit mr-5 bg-inherit text-white rounded px-5 py-2 flex items-center;
 }
 
 .selected-ingredient-div i {
@@ -19,7 +19,7 @@
 }
 
 .custom-select {
-    @apply relative text-white rounded;
+    @apply relative text-white rounded mr-5 min-w-[170px];
 }
 
 .order-by-btn {
@@ -31,15 +31,15 @@
 }
 
 .order-by-input {
-    @apply hidden justify-between items-center rounded bg-inherit w-full;
+    @apply hidden justify-between items-center rounded bg-inherit w-full h-full min-w-[670px];
 }
 
 .order-by-input input {
-    @apply px-5 py-6 bg-inherit;
+    @apply px-5 py-6 bg-inherit rounded w-full;
 }
 
 .custom-select ul {
-    @apply bg-inherit px-5 py-6 -mt-[5px] absolute flex justify-around flex-col items-center w-44 left-0 list-none rounded -translate-y-[10px] transition-all duration-500 ease-in-out invisible;
+    @apply bg-inherit px-5 py-6 -mt-[5px] absolute grid grid-cols-3 gap-2.5 w-auto left-0 list-none rounded -translate-y-[10px] transition-all duration-500 ease-in-out invisible;
 }
 
 .custom-select li {

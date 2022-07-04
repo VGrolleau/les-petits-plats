@@ -602,7 +602,7 @@ html {
 }
 
 .selected-ingredient-div{
-  margin-right: 1rem;
+  margin-right: 1.25rem;
   display: flex;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -624,6 +624,8 @@ html {
 
 .custom-select{
   position: relative;
+  margin-right: 1.25rem;
+  min-width: 170px;
   border-radius: 0.25rem;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -648,7 +650,9 @@ html {
 
 .order-by-input{
   display: none;
+  height: 100%;
   width: 100%;
+  min-width: 670px;
   align-items: center;
   justify-content: space-between;
   border-radius: 0.25rem;
@@ -656,6 +660,8 @@ html {
 }
 
 .order-by-input input{
+  width: 100%;
+  border-radius: 0.25rem;
   background-color: inherit;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -668,14 +674,13 @@ html {
   position: absolute;
   left: 0px;
   margin-top: -5px;
-  display: flex;
-  width: 11rem;
+  display: grid;
+  width: auto;
   --tw-translate-y: -10px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   list-style-type: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.625rem;
   border-radius: 0.25rem;
   background-color: inherit;
   padding-left: 1.25rem;
