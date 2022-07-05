@@ -670,11 +670,10 @@ html {
 }
 
 .custom-select ul{
-  visibility: hidden;
   position: absolute;
   left: 0px;
   margin-top: -5px;
-  display: grid;
+  display: none;
   width: auto;
   min-width: 670px;
   --tw-translate-y: -10px;
