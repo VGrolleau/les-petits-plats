@@ -12,9 +12,10 @@ export default class Search {
         this.ulSelectIngredients = document.getElementById("ul-select-ingredients");
         this.ulSelectAppliances = document.getElementById("ul-select-appliance");
         this.ulSelectUstensils = document.getElementById("ul-select-ustensils");
-        this.selectionSection = document.createElement('section');
-        this.selectionSection.classList.add("selection-section", "w-[80%]", "mx-[10%]", "mt-4", "flex");
         this.customSelectGroup = document.querySelector(".custom-select-group");
+        this.selectionSection = document.querySelector(".selection-section");
+
+        this.xMark = '<i class="fa-regular fa-circle-xmark close"></i>';
     }
 
     principalSearch(searchedString = null) {
@@ -112,32 +113,26 @@ export default class Search {
     }
 
     createTagIngredient(ingredient) {
-        console.log(this.tagIngredients, this.tagAppliances, this.tagUstensils);
         const tagDiv = document.createElement('div');
         tagDiv.classList.add("tag-div");
         tagDiv.style.backgroundColor = "#3282F7";
-        tagDiv.innerHTML = ingredient + "<i class=\"fa-regular fa-circle-xmark close\"></i>";
+        tagDiv.innerHTML = ingredient + this.xMark;
         this.selectionSection.appendChild(tagDiv);
-        this.customSelectGroup.before(this.selectionSection);
     }
 
     createTagAppliance(appliance) {
-        console.log(this.tagIngredients, this.tagAppliances, this.tagUstensils);
         const tagDiv = document.createElement('div');
         tagDiv.classList.add("tag-div");
         tagDiv.style.backgroundColor = "#68D9A4";
-        tagDiv.innerHTML = appliance + "<i class=\"fa-regular fa-circle-xmark close\"></i>";
+        tagDiv.innerHTML = appliance + this.xMark;
         this.selectionSection.appendChild(tagDiv);
-        this.customSelectGroup.before(this.selectionSection);
     }
 
     createTagUstensil(ustensil) {
-        console.log(this.tagIngredients, this.tagAppliances, this.tagUstensils);
         const tagDiv = document.createElement('div');
         tagDiv.classList.add("tag-div");
         tagDiv.style.backgroundColor = "#ED6454";
-        tagDiv.innerHTML = ustensil + "<i class=\"fa-regular fa-circle-xmark close\"></i>";
+        tagDiv.innerHTML = ustensil + this.xMark;
         this.selectionSection.appendChild(tagDiv);
-        this.customSelectGroup.before(this.selectionSection);
     }
 }

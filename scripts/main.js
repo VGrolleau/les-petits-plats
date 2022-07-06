@@ -39,6 +39,9 @@ buttons.forEach(button => {
     })
 });
 
+const selectionSection = document.querySelector(".selection-section");
+// selectionSection.classList.add("selection-section", "w-[80%]", "mx-[10%]", "mt-4", "flex");
+
 const liIngredients = document.querySelectorAll(".li-ingredient-select");
 liIngredients.forEach(li => {
     li.addEventListener("click", () => {
@@ -62,6 +65,22 @@ liUstensils.forEach(li => {
         search.createTagUstensil(li.textContent);
     })
 });
+
+selectionSection.addEventListener("click", (event) => {
+    if (event.target.className === "fa-regular fa-circle-xmark close") {
+        event.target.parentNode.style.display = "none";
+        if (search.tagIngredients.has(event.target.parentNode.textContent)) {
+            search.tagIngredients.delete(event.target.parentNode.textContent);
+        }
+        if (search.tagAppliances.has(event.target.parentNode.textContent)) {
+            search.tagAppliances.delete(event.target.parentNode.textContent);
+        }
+        if (search.tagUstensils.has(event.target.parentNode.textContent)) {
+            search.tagUstensils.delete(event.target.parentNode.textContent);
+        }
+    }
+});
+
 
 // function emptySelects() {
 //     ulSelectIngredients.innerHTML = "";
@@ -188,14 +207,3 @@ liUstensils.forEach(li => {
 //         principalSearch();
 //     })
 // })
-
-// selectionSection.addEventListener("click", (event) => {
-//     if (event.target.className === "fa-regular fa-circle-xmark close") {
-//         const index = selectionSectionElements.indexOf(event.target.parentNode.textContent);
-//         if (index > -1) {
-//             selectionSectionElements.splice(index, 1);
-//         }
-//         event.target.parentNode.style.display = "none";
-//     }
-//     console.log(selectionSectionElements);
-// });
