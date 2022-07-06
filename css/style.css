@@ -50,14 +50,14 @@
 /*    @apply visible pointer-events-auto translate-y-0;*/
 /*}*/
 
-/*.custom-select button:focus .select-arrow,*/
-/*.order-by-input .select-arrow {*/
-/*    @apply rotate-180 transition-transform duration-500 ease-in-out;*/
-/*}*/
+.custom-select button:focus .select-arrow,
+.order-by-input .select-arrow {
+    @apply rotate-180 transition-transform duration-500 ease-in-out;
+}
 
-/*.select-arrow {*/
-/*    @apply transition-transform duration-500 ease-in-out;*/
-/*}*/
+.select-arrow {
+    @apply transition-transform duration-500 ease-in-out;
+}
 
 .recipe-card {
     @apply rounded bg-[#E7E7E7];

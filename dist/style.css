@@ -709,14 +709,20 @@ html {
 /*    @apply visible pointer-events-auto translate-y-0;*/
 /*}*/
 
-/*.custom-select button:focus .select-arrow,*/
-/*.order-by-input .select-arrow {*/
-/*    @apply rotate-180 transition-transform duration-500 ease-in-out;*/
-/*}*/
+.custom-select button:focus .select-arrow, 
+.order-by-input .select-arrow{
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transition-property: transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-/*.select-arrow {*/
-/*    @apply transition-transform duration-500 ease-in-out;*/
-/*}*/
+.select-arrow{
+  transition-property: transform;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .recipe-card{
   border-radius: 0.25rem;

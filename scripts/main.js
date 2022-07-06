@@ -22,21 +22,27 @@ searchInput.addEventListener("input", (e) => {
 });
 
 const buttons = document.querySelectorAll(".order-by-btn");
+// const inputDivs = document.querySelectorAll(".order-by-input");
 buttons.forEach(button => {
     button.addEventListener("click", (e) => {
         e.stopPropagation();
         const ul = e.target.parentNode.querySelector("ul");
-        const selectArrow = e.target.querySelector(".select-arrow");
+        const inputDiv = e.target.parentNode.querySelector(".order-by-input");
+        // const selectArrow = e.target.querySelector(".select-arrow");
         if (ul.classList.contains("hidden")) {
             ul.classList.remove("hidden", "-translate-y-[10px]");
             ul.classList.add("grid", "translate-y-0");
-            selectArrow.classList.add("rotate-180", "transition-transform", "duration-500", "ease-in-out");
+            // selectArrow.classList.add("rotate-180", "transition-transform", "duration-500", "ease-in-out");
+            button.style.display = "none";
+            inputDiv.style.display = "flex";
         } else {
             ul.classList.add("hidden", "-translate-y-[10px]");
             ul.classList.remove("grid", "translate-y-0");
-            selectArrow.classList.remove("rotate-180");
+            // selectArrow.classList.remove("rotate-180");
+            button.style.display = "flex";
+            inputDiv.style.display = "none";
         }
-    })
+    });
 });
 
 const selectionSection = document.querySelector(".selection-section");
@@ -80,7 +86,6 @@ selectionSection.addEventListener("click", (event) => {
         }
     }
 });
-
 
 // function emptySelects() {
 //     ulSelectIngredients.innerHTML = "";
