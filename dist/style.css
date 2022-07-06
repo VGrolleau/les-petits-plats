@@ -517,6 +517,9 @@ html {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.pointer-events-none{
+  pointer-events: none;
+}
 .absolute{
   position: absolute;
 }
@@ -552,6 +555,9 @@ html {
 }
 .grid{
   display: grid;
+}
+.hidden{
+  display: none;
 }
 .w-64{
   width: 16rem;
@@ -601,7 +607,7 @@ html {
   padding: 1.5rem;
 }
 
-.selected-div{
+.tag-div{
   margin-right: 1.25rem;
   display: flex;
   width: -webkit-fit-content;
@@ -618,7 +624,7 @@ html {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.selected-div i{
+.tag-div i{
   margin-left: 0.75rem;
 }
 
@@ -673,11 +679,8 @@ html {
   position: absolute;
   left: 0px;
   margin-top: -5px;
-  display: none;
   width: auto;
   min-width: 670px;
-  --tw-translate-y: -10px;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   list-style-type: none;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.625rem;
@@ -702,27 +705,18 @@ html {
   text-indent: 0.625rem;
 }
 
-.custom-select button:focus + ul{
-  pointer-events: auto;
-  visibility: visible;
-  --tw-translate-y: 0px;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
+/*.custom-select button:focus + ul {*/
+/*    @apply visible pointer-events-auto translate-y-0;*/
+/*}*/
 
-.custom-select button:focus .select-arrow, 
-.order-by-input .select-arrow{
-  --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  transition-property: transform;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
+/*.custom-select button:focus .select-arrow,*/
+/*.order-by-input .select-arrow {*/
+/*    @apply rotate-180 transition-transform duration-500 ease-in-out;*/
+/*}*/
 
-.select-arrow{
-  transition-property: transform;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
+/*.select-arrow {*/
+/*    @apply transition-transform duration-500 ease-in-out;*/
+/*}*/
 
 .recipe-card{
   border-radius: 0.25rem;

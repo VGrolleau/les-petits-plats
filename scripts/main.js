@@ -3,6 +3,7 @@ import Recipe from "./models/Recipe.js";
 import Search from "./Search.js";
 
 // const customSelectGroup = document.querySelector(".custom-select-group");
+// const customSelects = document.querySelectorAll(".custom-select");
 // const ingredientsInput = document.getElementById("ingredients-input");
 // const appliancesInput = document.getElementById("appliances-input");
 // const ustensilsInput = document.getElementById("ustensils-input");
@@ -13,7 +14,6 @@ recipes.forEach(recipe => {
     readyRecipes.push(new Recipe(recipe));
 })
 const search = new Search(readyRecipes);
-// search.displayData(readyRecipes);
 search.principalSearch();
 
 const searchInput = document.getElementById("search-bar");
@@ -22,21 +22,46 @@ searchInput.addEventListener("input", (e) => {
 });
 
 const buttons = document.querySelectorAll(".order-by-btn");
-
 buttons.forEach(button => {
     button.addEventListener("click", (e) => {
         e.stopPropagation();
         const ul = e.target.parentNode.querySelector("ul");
-        console.log(ul.classList)
+        const selectArrow = e.target.querySelector(".select-arrow");
         if (ul.classList.contains("hidden")) {
-            ul.classList.remove("hidden");
-            ul.classList.add("grid");
+            ul.classList.remove("hidden", "-translate-y-[10px]");
+            ul.classList.add("grid", "translate-y-0");
+            selectArrow.classList.add("rotate-180", "transition-transform", "duration-500", "ease-in-out");
         } else {
-            ul.classList.add("hidden");
-            ul.classList.remove("grid");
+            ul.classList.add("hidden", "-translate-y-[10px]");
+            ul.classList.remove("grid", "translate-y-0");
+            selectArrow.classList.remove("rotate-180");
         }
     })
-})
+});
+
+const liIngredients = document.querySelectorAll(".li-ingredient-select");
+liIngredients.forEach(li => {
+    li.addEventListener("click", () => {
+        search.tagIngredients.add(li.textContent)
+        search.createTagIngredient(li.textContent);
+    })
+});
+
+const liAppliances = document.querySelectorAll(".li-appliance-select");
+liAppliances.forEach(li => {
+    li.addEventListener("click", () => {
+        search.tagAppliances.add(li.textContent)
+        search.createTagAppliance(li.textContent);
+    })
+});
+
+const liUstensils = document.querySelectorAll(".li-ustensil-select");
+liUstensils.forEach(li => {
+    li.addEventListener("click", () => {
+        search.tagUstensils.add(li.textContent)
+        search.createTagUstensil(li.textContent);
+    })
+});
 
 // function emptySelects() {
 //     ulSelectIngredients.innerHTML = "";
@@ -44,9 +69,9 @@ buttons.forEach(button => {
 //     ulSelectUstensils.innerHTML = "";
 // }
 
-// const customSelects = document.querySelectorAll(".custom-select");
-const selectionSection = document.createElement('section');
-selectionSection.classList.add("selection-section", "w-[80%]", "mx-[10%]", "mt-4", "flex");
+// const selectionSection = document.createElement('section');
+// selectionSection.classList.add("selection-section", "w-[80%]", "mx-[10%]", "mt-4", "flex");
+
 // const selectionSectionElements = [];
 // const selectedIngredients = new Set();
 // const selectedAppliances = new Set();
