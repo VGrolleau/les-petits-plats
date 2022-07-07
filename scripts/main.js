@@ -26,6 +26,8 @@ customSelects.forEach(select => {
     const inputDiv = select.querySelector(".order-by-input");
     const inputArrow = select.querySelector(".order-by-input .select-arrow");
     const ul = select.querySelector("ul");
+    const inputSearch = select.querySelector(".order-by-input input");
+    inputSearch.value = "";
 
     button.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -41,7 +43,21 @@ customSelects.forEach(select => {
         ul.classList.remove("grid", "translate-y-0");
         button.style.display = "flex";
         inputDiv.style.display = "none";
-    })
+    });
+
+    if (select.id === "custom-select-ingredients") {
+        inputSearch.addEventListener("input", () => {
+            search.searchIngredient(inputSearch.value);
+        })
+    }
+
+    // if (select.id === "custom-select-appliances") {
+    //     console.log(select, inputSearch);
+    // }
+    //
+    // if (select.id === "custom-select-ustensils") {
+    //     console.log(select, inputSearch);
+    // }
 });
 
 const selectionSection = document.querySelector(".selection-section");
@@ -50,7 +66,7 @@ const selectionSection = document.querySelector(".selection-section");
 const liIngredients = document.querySelectorAll(".li-ingredient-select");
 liIngredients.forEach(li => {
     li.addEventListener("click", () => {
-        search.tagIngredients.add(li.textContent)
+        search.tagIngredients.add(li.textContent);
         search.createTagIngredient(li.textContent);
     })
 });
@@ -58,7 +74,7 @@ liIngredients.forEach(li => {
 const liAppliances = document.querySelectorAll(".li-appliance-select");
 liAppliances.forEach(li => {
     li.addEventListener("click", () => {
-        search.tagAppliances.add(li.textContent)
+        search.tagAppliances.add(li.textContent);
         search.createTagAppliance(li.textContent);
     })
 });
@@ -66,7 +82,7 @@ liAppliances.forEach(li => {
 const liUstensils = document.querySelectorAll(".li-ustensil-select");
 liUstensils.forEach(li => {
     li.addEventListener("click", () => {
-        search.tagUstensils.add(li.textContent)
+        search.tagUstensils.add(li.textContent);
         search.createTagUstensil(li.textContent);
     })
 });

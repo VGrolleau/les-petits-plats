@@ -12,10 +12,10 @@ export default class Search {
         this.ulSelectIngredients = document.getElementById("ul-select-ingredients");
         this.ulSelectAppliances = document.getElementById("ul-select-appliance");
         this.ulSelectUstensils = document.getElementById("ul-select-ustensils");
-        this.customSelectGroup = document.querySelector(".custom-select-group");
         this.selectionSection = document.querySelector(".selection-section");
-
         this.xMark = '<i class="fa-regular fa-circle-xmark close"></i>';
+        // this.searchedIngredients = new Set();
+        this.searchedIngredientsArray = [];
     }
 
     principalSearch(searchedString = null) {
@@ -134,5 +134,40 @@ export default class Search {
         tagDiv.style.backgroundColor = "#ED6454";
         tagDiv.innerHTML = ustensil + this.xMark;
         this.selectionSection.appendChild(tagDiv);
+    }
+
+    searchIngredient(searchedString = null) {
+        // this.recipesSection.innerHTML = "";
+        this.ulSelectIngredients.innerHTML = "";
+        if (searchedString !== null) {
+            this.searchedString = searchedString;
+        }
+
+        if (searchedString.length > 0) {
+            this.searchedIngredientsArray.length = 0;
+            this.filteredIngredients.forEach(ingredient => {
+                if (ingredient.toLowerCase().includes(searchedString)) {
+                    this.searchedIngredientsArray.push(ingredient);
+                }
+            });
+        } else {
+            this.filteredIngredients.forEach(ingredient => {
+                this.searchedIngredientsArray.push(ingredient);
+            });
+        }
+
+        console.log(this.searchedIngredientsArray);
+        this.searchedIngredientsArray.forEach(element => {
+            const liIngredientSelect = document.createElement('li');
+            liIngredientSelect.classList.add("li-ingredient-select");
+            liIngredientSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
+            this.ulSelectIngredients.appendChild(liIngredientSelect);
+        });
+    }
+
+    searchAppliance() {
+    }
+
+    searchUstensil() {
     }
 }
