@@ -3,7 +3,6 @@ import Recipe from "./models/Recipe.js";
 import Search from "./Search.js";
 
 // const customSelectGroup = document.querySelector(".custom-select-group");
-// const customSelects = document.querySelectorAll(".custom-select");
 // const ingredientsInput = document.getElementById("ingredients-input");
 // const appliancesInput = document.getElementById("appliances-input");
 // const ustensilsInput = document.getElementById("ustensils-input");
@@ -21,28 +20,28 @@ searchInput.addEventListener("input", (e) => {
     search.principalSearch(e.target.value.toLowerCase());
 });
 
-const buttons = document.querySelectorAll(".order-by-btn");
-// const inputDivs = document.querySelectorAll(".order-by-input");
-buttons.forEach(button => {
+const customSelects = document.querySelectorAll(".custom-select");
+customSelects.forEach(select => {
+    const button = select.querySelector(".order-by-btn");
+    const inputDiv = select.querySelector(".order-by-input");
+    const inputArrow = select.querySelector(".order-by-input .select-arrow");
+    const ul = select.querySelector("ul");
+
     button.addEventListener("click", (e) => {
         e.stopPropagation();
-        const ul = e.target.parentNode.querySelector("ul");
-        const inputDiv = e.target.parentNode.querySelector(".order-by-input");
-        // const selectArrow = e.target.querySelector(".select-arrow");
-        if (ul.classList.contains("hidden")) {
             ul.classList.remove("hidden", "-translate-y-[10px]");
             ul.classList.add("grid", "translate-y-0");
-            // selectArrow.classList.add("rotate-180", "transition-transform", "duration-500", "ease-in-out");
             button.style.display = "none";
             inputDiv.style.display = "flex";
-        } else {
-            ul.classList.add("hidden", "-translate-y-[10px]");
-            ul.classList.remove("grid", "translate-y-0");
-            // selectArrow.classList.remove("rotate-180");
-            button.style.display = "flex";
-            inputDiv.style.display = "none";
-        }
     });
+
+    inputArrow.addEventListener("click", (e) => {
+        e.stopPropagation();
+        ul.classList.add("hidden", "-translate-y-[10px]");
+        ul.classList.remove("grid", "translate-y-0");
+        button.style.display = "flex";
+        inputDiv.style.display = "none";
+    })
 });
 
 const selectionSection = document.querySelector(".selection-section");
