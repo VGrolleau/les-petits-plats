@@ -47,7 +47,7 @@ customSelects.forEach(select => {
 
     if (select.id === "custom-select-ingredients") {
         inputSearch.addEventListener("input", () => {
-            search.searchIngredient(inputSearch.value);
+            search.searchIngredient(inputSearch.value.toLowerCase());
         })
     }
 
