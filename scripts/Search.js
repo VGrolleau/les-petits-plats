@@ -15,7 +15,7 @@ export default class Search {
         this.selectionSection = document.querySelector(".selection-section");
         this.xMark = '<i class="fa-regular fa-circle-xmark close"></i>';
         // this.searchedIngredients = new Set();
-        this.searchedIngredientsArray = [];
+        // this.searchedIngredientsArray = [];
     }
 
     principalSearch(searchedString = null) {
@@ -38,8 +38,18 @@ export default class Search {
             searchedArray = this.recipes;
         }
 
+        // searchedArray = searchedArray.filter(recipe => {
+        // //    recipe.contient tous les ingredients de tagIngredient && recipe.contient tous les ingredients de tagAppliance && recipe.contient tous les ingredients de tagUstensil
+        // //    foreach sur les tagIngredient
+        // //    foreach sur les tagAppliance
+        // //    foreach sur les tagUstensil
+        // });
+
         if (searchedArray.length > 0) {
             this.recipesSection.classList.add("grid-cols-3", "gap-x-44", "gap-y-20");
+            this.filteredIngredients = new Set();
+            this.filteredAppliances = new Set();
+            this.filteredUstensils = new Set();
             searchedArray.forEach(element => {
                 this.getIngredientsSelect(element);
                 this.getAppliancesSelect(element);
@@ -76,8 +86,7 @@ export default class Search {
         this.clearDOM();
 
         recipes.forEach(recipe => {
-            const recipeCardDOM = recipe.getRecipe();
-            this.recipesSection.appendChild(recipeCardDOM);
+            this.recipesSection.appendChild(recipe.getRecipe());
         });
 
         const filteredIngredientsArray = [...this.filteredIngredients];
@@ -136,28 +145,23 @@ export default class Search {
         this.selectionSection.appendChild(tagDiv);
     }
 
-    searchIngredient(searchedString = null) {
+    searchIngredient(searchedString) {
         // this.recipesSection.innerHTML = "";
         this.ulSelectIngredients.innerHTML = "";
-        if (searchedString !== null) {
-            this.searchedString = searchedString;
-        }
+        let newFilteredIngredients = new Set();
 
         if (searchedString.length > 0) {
-            this.searchedIngredientsArray.length = 0;
             this.filteredIngredients.forEach(ingredient => {
                 if (ingredient.toLowerCase().includes(searchedString)) {
-                    this.searchedIngredientsArray.push(ingredient);
+                    newFilteredIngredients.add(ingredient);
                 }
             });
         } else {
-            this.filteredIngredients.forEach(ingredient => {
-                this.searchedIngredientsArray.push(ingredient);
-            });
+            newFilteredIngredients = this.filteredIngredients;
         }
 
-        console.log(this.searchedIngredientsArray);
-        this.searchedIngredientsArray.forEach(element => {
+        let arrayFilteredIngredients = [...newFilteredIngredients];
+        arrayFilteredIngredients.forEach(element => {
             const liIngredientSelect = document.createElement('li');
             liIngredientSelect.classList.add("li-ingredient-select");
             liIngredientSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
@@ -165,9 +169,49 @@ export default class Search {
         });
     }
 
-    searchAppliance() {
+    searchAppliance(searchedString) {
+        this.ulSelectAppliances.innerHTML = "";
+        let newFilteredAppliances = new Set();
+
+        if (searchedString.length > 0) {
+            this.filteredAppliances.forEach(appliance => {
+                if (appliance.toLowerCase().includes(searchedString)) {
+                    newFilteredAppliances.add(appliance);
+                }
+            });
+        } else {
+            newFilteredAppliances = this.filteredAppliances;
+        }
+
+        let arrayFilteredAppliances = [...newFilteredAppliances];
+        arrayFilteredAppliances.forEach(element => {
+            const liApplianceSelect = document.createElement('li');
+            liApplianceSelect.classList.add("li-appliance-select");
+            liApplianceSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
+            this.ulSelectAppliances.appendChild(liApplianceSelect);
+        });
     }
 
-    searchUstensil() {
+    searchUstensil(searchedString) {
+        this.ulSelectUstensils.innerHTML = "";
+        let newFilteredUstensils = new Set();
+
+        if (searchedString.length > 0) {
+            this.filteredUstensils.forEach(ustensil => {
+                if (ustensil.toLowerCase().includes(searchedString)) {
+                    newFilteredUstensils.add(ustensil);
+                }
+            });
+        } else {
+            newFilteredUstensils = this.filteredUstensils;
+        }
+
+        let arrayFilteredUstensils = [...newFilteredUstensils];
+        arrayFilteredUstensils.forEach(element => {
+            const liUstensilSelect = document.createElement('li');
+            liUstensilSelect.classList.add("li-ustensil-select");
+            liUstensilSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
+            this.ulSelectUstensils.appendChild(liUstensilSelect);
+        });
     }
 }

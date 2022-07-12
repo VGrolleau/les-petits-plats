@@ -31,10 +31,10 @@ customSelects.forEach(select => {
 
     button.addEventListener("click", (e) => {
         e.stopPropagation();
-            ul.classList.remove("hidden", "-translate-y-[10px]");
-            ul.classList.add("grid", "translate-y-0");
-            button.style.display = "none";
-            inputDiv.style.display = "flex";
+        ul.classList.remove("hidden", "-translate-y-[10px]");
+        ul.classList.add("grid", "translate-y-0");
+        button.style.display = "none";
+        inputDiv.style.display = "flex";
     });
 
     inputArrow.addEventListener("click", (e) => {
@@ -45,23 +45,20 @@ customSelects.forEach(select => {
         inputDiv.style.display = "none";
     });
 
-    if (select.id === "custom-select-ingredients") {
-        inputSearch.addEventListener("input", () => {
-            search.searchIngredient(inputSearch.value.toLowerCase());
-        })
-    }
-
-    // if (select.id === "custom-select-appliances") {
-    //     console.log(select, inputSearch);
-    // }
-    //
-    // if (select.id === "custom-select-ustensils") {
-    //     console.log(select, inputSearch);
-    // }
+    inputSearch.addEventListener("input", () => {
+        if (select.id === "custom-select-ingredients") {
+        search.searchIngredient(inputSearch.value.toLowerCase());
+        }
+        if (select.id === "custom-select-appliances") {
+            search.searchAppliance(inputSearch.value.toLowerCase());
+        }
+        if (select.id === "custom-select-ustensils") {
+            search.searchUstensil(inputSearch.value.toLowerCase());
+        }
+    });
 });
 
 const selectionSection = document.querySelector(".selection-section");
-// selectionSection.classList.add("selection-section", "w-[80%]", "mx-[10%]", "mt-4", "flex");
 
 const liIngredients = document.querySelectorAll(".li-ingredient-select");
 liIngredients.forEach(li => {
