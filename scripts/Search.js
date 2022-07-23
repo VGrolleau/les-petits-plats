@@ -12,10 +12,6 @@ export default class Search {
         this.ulSelectIngredients = document.getElementById("ul-select-ingredients");
         this.ulSelectAppliances = document.getElementById("ul-select-appliance");
         this.ulSelectUstensils = document.getElementById("ul-select-ustensils");
-        this.selectionSection = document.querySelector(".selection-section");
-        this.xMark = '<i class="fa-regular fa-circle-xmark close"></i>';
-        // this.searchedIngredients = new Set();
-        // this.searchedIngredientsArray = [];
     }
 
     principalSearch(searchedString = null) {
@@ -38,12 +34,9 @@ export default class Search {
             searchedArray = this.recipes;
         }
 
-        // searchedArray = searchedArray.filter(recipe => {
-        // //    recipe.contient tous les ingredients de tagIngredient && recipe.contient tous les ingredients de tagAppliance && recipe.contient tous les ingredients de tagUstensil
-        // //    foreach sur les tagIngredient
-        // //    foreach sur les tagAppliance
-        // //    foreach sur les tagUstensil
-        // });
+        searchedArray = searchedArray.filter(recipe => {
+            return recipe.containsIngredients(this.tagIngredients) && recipe.containsAppliances(this.tagAppliances) && recipe.containsUstensils(this.tagUstensils);
+        });
 
         if (searchedArray.length > 0) {
             this.recipesSection.classList.add("grid-cols-3", "gap-x-44", "gap-y-20");
@@ -79,10 +72,6 @@ export default class Search {
     }
 
     displayData(recipes) {
-        // ingredientsInput.value = "";
-        // appliancesInput.value = "";
-        // ustensilsInput.value = "";
-        // emptySelects();
         this.clearDOM();
 
         recipes.forEach(recipe => {
@@ -121,32 +110,7 @@ export default class Search {
         this.ulSelectUstensils.innerHTML = "";
     }
 
-    createTagIngredient(ingredient) {
-        const tagDiv = document.createElement('div');
-        tagDiv.classList.add("tag-div");
-        tagDiv.style.backgroundColor = "#3282F7";
-        tagDiv.innerHTML = ingredient + this.xMark;
-        this.selectionSection.appendChild(tagDiv);
-    }
-
-    createTagAppliance(appliance) {
-        const tagDiv = document.createElement('div');
-        tagDiv.classList.add("tag-div");
-        tagDiv.style.backgroundColor = "#68D9A4";
-        tagDiv.innerHTML = appliance + this.xMark;
-        this.selectionSection.appendChild(tagDiv);
-    }
-
-    createTagUstensil(ustensil) {
-        const tagDiv = document.createElement('div');
-        tagDiv.classList.add("tag-div");
-        tagDiv.style.backgroundColor = "#ED6454";
-        tagDiv.innerHTML = ustensil + this.xMark;
-        this.selectionSection.appendChild(tagDiv);
-    }
-
     searchIngredient(searchedString) {
-        // this.recipesSection.innerHTML = "";
         this.ulSelectIngredients.innerHTML = "";
         let newFilteredIngredients = new Set();
 

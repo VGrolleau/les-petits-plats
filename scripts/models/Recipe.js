@@ -71,4 +71,65 @@ export default class Recipe {
 
         return recipeCard;
     }
+
+    containsIngredients(tagIngredients) {
+        const ingredientsArray = [...tagIngredients];
+        let result = 0;
+        ingredientsArray.forEach(ingredient => {
+            if (this.hasIngredient(ingredient) || tagIngredients.size === 0) {
+                result++;
+            }
+        });
+        return result === tagIngredients.size;
+    }
+
+    containsAppliances(tagAppliances) {
+        const appliancesArray = [...tagAppliances];
+        let result = 0;
+        appliancesArray.forEach(appliance => {
+            if (this.hasAppliance(appliance) || tagAppliances.size === 0) {
+                result++;
+            }
+        });
+        return result === tagAppliances.size;
+    }
+
+    containsUstensils(tagUstensils) {
+        const ustensilsArray = [...tagUstensils];
+        let result = 0;
+        ustensilsArray.forEach(ustensil => {
+            if (this.hasUstensil(ustensil) || tagUstensils.size === 0) {
+                result++;
+            }
+        });
+        return result === tagUstensils.size;
+    }
+
+    hasIngredient(ingredient) {
+        let result = false;
+        this.ingredients.forEach(ing => {
+            if (ing.ingredient.toLowerCase().includes(ingredient.toLowerCase())) {
+                result = true;
+            }
+        });
+        return result;
+    }
+
+    hasAppliance(appliance) {
+        let result = false;
+        if (this.appliance.toLowerCase().includes(appliance.toLowerCase())) {
+                result = true;
+        }
+        return result;
+    }
+
+    hasUstensil(ustensil) {
+        let result = false;
+        this.ustensils.forEach(ust => {
+            if (ust.toLowerCase().includes(ustensil.toLowerCase())) {
+                result = true;
+            }
+        });
+        return result;
+    }
 }
