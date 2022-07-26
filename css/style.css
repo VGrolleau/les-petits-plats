@@ -19,11 +19,11 @@
 }
 
 .custom-select {
-    @apply relative text-white rounded mr-5 min-w-[170px];
+    @apply relative text-white rounded lg:mr-5 lg:min-w-[170px] mb-4 lg:w-fit w-full;
 }
 
 .order-by-btn {
-    @apply px-5 py-6 flex justify-between items-center rounded bg-inherit w-full;
+    @apply px-5 py-6 flex justify-between items-center rounded bg-inherit lg:w-[170px] w-full;
 }
 
 .order-by-btn:hover {
@@ -31,7 +31,7 @@
 }
 
 .order-by-input {
-    @apply hidden justify-between items-center rounded bg-inherit w-full h-full min-w-[670px];
+    @apply hidden justify-between items-center rounded bg-inherit w-full h-full lg:min-w-[670px];
 }
 
 .order-by-input input {
@@ -39,7 +39,7 @@
 }
 
 .custom-select ul {
-    @apply bg-inherit px-5 py-6 -mt-[5px] absolute min-w-[670px] grid-cols-3 gap-2.5 w-auto left-0 list-none rounded transition-all duration-500 ease-in-out;
+    @apply bg-inherit px-5 py-6 -mt-[5px] absolute lg:min-w-[670px] grid-cols-1 gap-2.5 lg:grid-cols-2 xl:grid-cols-3 w-auto left-0 list-none rounded transition-all duration-500 ease-in-out;
 }
 
 .custom-select li {
@@ -53,6 +53,10 @@
 
 .select-arrow {
     @apply transition-transform duration-500 ease-in-out;
+}
+
+.recipes-section {
+    @apply w-[80%] mx-[10%] my-6 grid grid-cols-1 gap-x-44 gap-y-20 lg:grid-cols-2 xl:grid-cols-3;
 }
 
 .recipe-card {

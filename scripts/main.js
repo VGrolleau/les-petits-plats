@@ -28,16 +28,14 @@ customSelects.forEach(select => {
 
     button.addEventListener("click", (e) => {
         e.stopPropagation();
-        ul.classList.remove("hidden", "-translate-y-[10px]");
-        ul.classList.add("grid", "translate-y-0");
+        ul.style.display = "grid";
         button.style.display = "none";
         inputDiv.style.display = "flex";
     });
 
     inputArrow.addEventListener("click", (e) => {
         e.stopPropagation();
-        ul.classList.add("hidden", "-translate-y-[10px]");
-        ul.classList.remove("grid", "translate-y-0");
+        ul.style.display = "none";
         button.style.display = "flex";
         inputDiv.style.display = "none";
     });
