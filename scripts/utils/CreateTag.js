@@ -1,23 +1,17 @@
-export function createTag(type, data) {
+export function createTag(color, data, callback) {
     const selectionSection = document.querySelector(".selection-section");
     const tagDiv = document.createElement('div');
-    const xMark = '<i class="fa-regular fa-circle-xmark close"></i>';
+    const iXMark = document.createElement("i");
+    iXMark.classList.add("fa-regular", "fa-circle-xmark", "close")
     tagDiv.classList.add("tag-div");
-    tagDiv.innerHTML = data + xMark;
-
-    switch (type) {
-        case "ingredient":
-            tagDiv.style.backgroundColor = "#3282F7";
-            break;
-
-        case "appliance":
-            tagDiv.style.backgroundColor = "#68D9A4";
-            break;
-
-        case "ustensil":
-            tagDiv.style.backgroundColor = "#ED6454";
-            break;
-    }
+    tagDiv.innerHTML = data;
+    tagDiv.appendChild(iXMark);
+    tagDiv.style.backgroundColor = color;
 
     selectionSection.appendChild(tagDiv);
+
+    iXMark.addEventListener("click", () => {
+        tagDiv.style.display = "none";
+        callback();
+    });
 }

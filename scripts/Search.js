@@ -1,3 +1,6 @@
+import {createTag} from "./utils/CreateTag.js";
+import Recipe from "./models/Recipe.js";
+
 export default class Search {
     constructor(data) {
         this.recipes = data;
@@ -23,11 +26,13 @@ export default class Search {
 
         if (this.searchedString.length >= 3) {
             searchedArray = this.recipes.filter(element => {
-                element.ingredients.forEach(ingredient => {
-                    if (ingredient.ingredient.toLowerCase().includes(this.searchedString)) {
-                        return true;
-                    }
-                });
+                // todo: remplacer le foreach par Recipe.hasIngredient
+                // element.ingredients.forEach(ingredient => {
+                //     if (ingredient.ingredient.toLowerCase().includes(this.searchedString)) {
+                //         return true;
+                //     }
+                // });
+                this.recipes.hasIngredient(element);
                 return element.name.toLowerCase().includes(this.searchedString) || element.description.toLowerCase().includes(this.searchedString);
             });
         } else {
@@ -78,20 +83,40 @@ export default class Search {
             this.recipesSection.appendChild(recipe.getRecipe());
         });
 
+        // todo: refactoriser en une fonction les lignes 89 à 101
         const filteredIngredientsArray = [...this.filteredIngredients];
         filteredIngredientsArray.forEach(element => {
             const liIngredientSelect = document.createElement('li');
             liIngredientSelect.classList.add("li-ingredient-select");
             liIngredientSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
             this.ulSelectIngredients.appendChild(liIngredientSelect);
+
+            liIngredientSelect.addEventListener("click", () => {
+                this.tagIngredients.add(liIngredientSelect.textContent);
+                createTag("#3282F7", liIngredientSelect.textContent, () => {
+                    this.tagIngredients.delete(liIngredientSelect.textContent);
+                    this.principalSearch();
+                });
+                this.principalSearch();
+            });
         });
 
+        // todo: passer le callback dans le createTag
         const filteredApplianceArray = [...this.filteredAppliances];
         filteredApplianceArray.forEach(element => {
             const liSelectAppliance = document.createElement('li');
             liSelectAppliance.classList.add("li-appliance-select");
             liSelectAppliance.textContent = element.charAt(0).toUpperCase() + element.slice(1);
             this.ulSelectAppliances.appendChild(liSelectAppliance);
+
+            liSelectAppliance.addEventListener("click", () => {
+                this.tagAppliances.add(liSelectAppliance.textContent);
+                createTag("#68D9A4", liSelectAppliance.textContent, () => {
+                    this.tagAppliances.delete(liSelectAppliance.textContent);
+                    this.principalSearch();
+                });
+                this.principalSearch();
+            });
         });
 
         const filteredUstensilsArray = [...this.filteredUstensils];
@@ -100,6 +125,15 @@ export default class Search {
             liUstensilSelect.classList.add("li-ustensil-select");
             liUstensilSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
             this.ulSelectUstensils.appendChild(liUstensilSelect);
+
+            liUstensilSelect.addEventListener("click", () => {
+                this.tagUstensils.add(liUstensilSelect.textContent);
+                createTag("#ED6454", liUstensilSelect.textContent, () => {
+                    this.tagUstensils.delete(liUstensilSelect.textContent);
+                    this.principalSearch();
+                });
+                this.principalSearch();
+            });
         });
     }
 
