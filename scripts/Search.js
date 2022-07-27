@@ -1,5 +1,4 @@
 import {createTag} from "./utils/CreateTag.js";
-// import Recipe from "./models/Recipe.js";
 
 export default class Search {
     constructor(data) {
@@ -26,19 +25,11 @@ export default class Search {
 
         if (this.searchedString.length >= 3) {
             searchedArray = this.recipes.filter(element => {
-                // todo: remplacer le foreach par Recipe.hasIngredient
+                // todo: remplacer le foreach par Recipe.hasIngredient [FAIT]
                 element.ingredients.forEach(ingredient => {
-                    if (ingredient.ingredient.toLowerCase().includes(this.searchedString)) {
-                        return true;
-                    }
+                    element.hasIngredient(ingredient.ingredient);
                 });
-                /**
-                 * Sans "new Recipe", ne fonctionne pas.
-                 * Avec "new Recipe", ne fonctionne pas.
-                 * En passant par "this.recipes.hasIngredient()", ne fonctionne pas (error: is not a function).
-                 * Que dois-je utiliser ? Comment faire ?
-                 */
-                // Recipe.hasIngredient(element);
+
                 return element.name.toLowerCase().includes(this.searchedString) || element.description.toLowerCase().includes(this.searchedString);
             });
         } else {
