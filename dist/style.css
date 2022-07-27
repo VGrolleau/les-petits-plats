@@ -688,8 +688,9 @@ html {
 .custom-select ul{
   position: absolute;
   left: 0px;
+  z-index: 1;
   margin-top: -5px;
-  width: auto;
+  width: 100%;
   list-style-type: none;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 0.625rem;
