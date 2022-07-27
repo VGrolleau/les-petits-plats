@@ -1,7 +1,6 @@
 import {recipes} from "../data/recipes.js";
 import Recipe from "./models/Recipe.js";
 import Search from "./Search.js";
-import {createTag} from "./utils/CreateTag.js";
 
 document.getElementById("search-bar").value = "";
 const readyRecipes = [];
