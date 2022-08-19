@@ -25,7 +25,6 @@ export default class Search {
 
         if (this.searchedString.length >= 3) {
             searchedArray = this.recipes.filter(element => {
-                // todo: remplacer le foreach par Recipe.hasIngredient [FAIT]
                 element.ingredients.forEach(ingredient => {
                     element.hasIngredient(ingredient.ingredient);
                 });
