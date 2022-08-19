@@ -75,43 +75,43 @@ export default class Recipe {
     containsIngredients(tagIngredients) {
         const ingredientsArray = [...tagIngredients];
         let result = 0;
-        ingredientsArray.forEach(ingredient => {
+        for (const ingredient of ingredientsArray) {
             if (this.hasIngredient(ingredient) || tagIngredients.size === 0) {
                 result++;
             }
-        });
+        }
         return result === tagIngredients.size;
     }
 
     containsAppliances(tagAppliances) {
         const appliancesArray = [...tagAppliances];
         let result = 0;
-        appliancesArray.forEach(appliance => {
+        for (const appliance of appliancesArray) {
             if (this.hasAppliance(appliance) || tagAppliances.size === 0) {
                 result++;
             }
-        });
+        }
         return result === tagAppliances.size;
     }
 
     containsUstensils(tagUstensils) {
         const ustensilsArray = [...tagUstensils];
         let result = 0;
-        ustensilsArray.forEach(ustensil => {
+        for (const ustensil of ustensilsArray) {
             if (this.hasUstensil(ustensil) || tagUstensils.size === 0) {
                 result++;
             }
-        });
+        }
         return result === tagUstensils.size;
     }
 
     hasIngredient(ingredient) {
         let result = false;
-        this.ingredients.forEach(ing => {
-            if (ing.ingredient.toLowerCase().includes(ingredient.toLowerCase())) {
+        // for (const ing of ingredient) {
+            if (ingredient.toLowerCase().includes(ingredient.toLowerCase())) {
                 result = true;
             }
-        });
+        // }
         return result;
     }
 
@@ -125,11 +125,11 @@ export default class Recipe {
 
     hasUstensil(ustensil) {
         let result = false;
-        this.ustensils.forEach(ust => {
+        for (const ust of ustensil) {
             if (ust.toLowerCase().includes(ustensil.toLowerCase())) {
                 result = true;
             }
-        });
+        }
         return result;
     }
 }
