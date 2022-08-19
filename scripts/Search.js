@@ -25,7 +25,6 @@ export default class Search {
 
         if (this.searchedString.length >= 3) {
             searchedArray = this.recipes.filter(element => {
-                // todo: remplacer le foreach par Recipe.hasIngredient [FAIT]
                 element.ingredients.forEach(ingredient => {
                     element.hasIngredient(ingredient.ingredient);
                 });
@@ -80,13 +79,11 @@ export default class Search {
             this.recipesSection.appendChild(recipe.getRecipe());
         });
 
-        // todo: refactoriser en une fonction les lignes 95 à 107 [FAIT]
         const filteredIngredientsArray = [...this.filteredIngredients];
         filteredIngredientsArray.forEach(element => {
             this.filterElement("li-ingredient-select", element, this.ulSelectIngredients, this.tagIngredients, "#3282F7");
         });
 
-        // todo: passer le callback dans le createTag [FAIT]
         const filteredApplianceArray = [...this.filteredAppliances];
         filteredApplianceArray.forEach(element => {
             this.filterElement("li-appliance-select", element, this.ulSelectAppliances, this.tagAppliances, "#68D9A4");
