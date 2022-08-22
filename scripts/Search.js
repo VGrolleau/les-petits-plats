@@ -57,9 +57,9 @@ export default class Search {
     }
 
     getIngredientsSelect(recipe) {
-        recipe.ingredients.forEach(element => {
+        for (const element of recipe.ingredients) {
             this.filteredIngredients.add(element.ingredient.toLowerCase());
-        });
+        }
     }
 
     getAppliancesSelect(recipe) {
@@ -67,9 +67,9 @@ export default class Search {
     }
 
     getUstensilsSelect(recipe) {
-        recipe.ustensils.forEach(element => {
+        for (const element of recipe.ustensils) {
             this.filteredUstensils.add(element.toLowerCase());
-        });
+        }
     }
 
     displayData(recipes) {
