@@ -44,11 +44,11 @@ export default class Search {
             this.filteredIngredients = new Set();
             this.filteredAppliances = new Set();
             this.filteredUstensils = new Set();
-            searchedArray.forEach(element => {
+            for (const element of searchedArray) {
                 this.getIngredientsSelect(element);
                 this.getAppliancesSelect(element);
                 this.getUstensilsSelect(element);
-            })
+            }
             this.displayData(searchedArray);
         } else {
             this.recipesSection.classList.remove("grid-cols-3", "gap-x-44", "gap-y-20");
