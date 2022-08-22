@@ -80,19 +80,19 @@ export default class Search {
         });
 
         const filteredIngredientsArray = [...this.filteredIngredients];
-        filteredIngredientsArray.forEach(element => {
+        for (const element of filteredIngredientsArray) {
             this.filterElement("li-ingredient-select", element, this.ulSelectIngredients, this.tagIngredients, "#3282F7");
-        });
+        }
 
         const filteredApplianceArray = [...this.filteredAppliances];
-        filteredApplianceArray.forEach(element => {
+        for (const element of filteredApplianceArray) {
             this.filterElement("li-appliance-select", element, this.ulSelectAppliances, this.tagAppliances, "#68D9A4");
-        });
+        }
 
         const filteredUstensilsArray = [...this.filteredUstensils];
-        filteredUstensilsArray.forEach(element => {
+        for (const element of filteredUstensilsArray) {
             this.filterElement("li-ustensil-select", element, this.ulSelectUstensils, this.tagUstensils, "#ED6454");
-        });
+        }
     }
 
     filterElement(className, element, ul, tag, color) {
