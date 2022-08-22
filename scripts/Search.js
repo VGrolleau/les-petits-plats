@@ -123,22 +123,22 @@ export default class Search {
         let newFilteredIngredients = new Set();
 
         if (searchedString.length > 0) {
-            this.filteredIngredients.forEach(ingredient => {
+            for (const ingredient of this.filteredIngredients) {
                 if (ingredient.toLowerCase().includes(searchedString)) {
                     newFilteredIngredients.add(ingredient);
                 }
-            });
+            }
         } else {
             newFilteredIngredients = this.filteredIngredients;
         }
 
         let arrayFilteredIngredients = [...newFilteredIngredients];
-        arrayFilteredIngredients.forEach(element => {
+        for (const element of arrayFilteredIngredients) {
             const liIngredientSelect = document.createElement('li');
             liIngredientSelect.classList.add("li-ingredient-select");
             liIngredientSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
             this.ulSelectIngredients.appendChild(liIngredientSelect);
-        });
+        }
     }
 
     searchAppliance(searchedString) {
@@ -146,22 +146,22 @@ export default class Search {
         let newFilteredAppliances = new Set();
 
         if (searchedString.length > 0) {
-            this.filteredAppliances.forEach(appliance => {
+            for (const appliance of newFilteredAppliances) {
                 if (appliance.toLowerCase().includes(searchedString)) {
                     newFilteredAppliances.add(appliance);
                 }
-            });
+            }
         } else {
             newFilteredAppliances = this.filteredAppliances;
         }
 
         let arrayFilteredAppliances = [...newFilteredAppliances];
-        arrayFilteredAppliances.forEach(element => {
+        for (const element of arrayFilteredAppliances) {
             const liApplianceSelect = document.createElement('li');
             liApplianceSelect.classList.add("li-appliance-select");
             liApplianceSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
             this.ulSelectAppliances.appendChild(liApplianceSelect);
-        });
+        }
     }
 
     searchUstensil(searchedString) {
@@ -169,21 +169,21 @@ export default class Search {
         let newFilteredUstensils = new Set();
 
         if (searchedString.length > 0) {
-            this.filteredUstensils.forEach(ustensil => {
+            for (const ustensil of newFilteredUstensils) {
                 if (ustensil.toLowerCase().includes(searchedString)) {
                     newFilteredUstensils.add(ustensil);
                 }
-            });
+            }
         } else {
             newFilteredUstensils = this.filteredUstensils;
         }
 
         let arrayFilteredUstensils = [...newFilteredUstensils];
-        arrayFilteredUstensils.forEach(element => {
+        for (const element of arrayFilteredUstensils) {
             const liUstensilSelect = document.createElement('li');
             liUstensilSelect.classList.add("li-ustensil-select");
             liUstensilSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
             this.ulSelectUstensils.appendChild(liUstensilSelect);
-        });
+        }
     }
 }
