@@ -25,9 +25,9 @@ export default class Search {
 
         if (this.searchedString.length >= 3) {
             searchedArray = this.recipes.filter(element => {
-                element.ingredients.forEach(ingredient => {
+                for (const ingredient of element.ingredients) {
                     element.hasIngredient(ingredient.ingredient);
-                });
+                }
 
                 return element.name.toLowerCase().includes(this.searchedString) || element.description.toLowerCase().includes(this.searchedString);
             });
