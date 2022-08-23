@@ -107,11 +107,11 @@ export default class Recipe {
 
     hasIngredient(ingredient) {
         let result = false;
-        // for (const ing of ingredient) {
-            if (ingredient.toLowerCase().includes(ingredient.toLowerCase())) {
+        for (const ing of this.ingredients) {
+            if (ing.ingredient.toLowerCase().includes(ingredient.toLowerCase())) {
                 result = true;
             }
-        // }
+        }
         return result;
     }
 
@@ -125,7 +125,7 @@ export default class Recipe {
 
     hasUstensil(ustensil) {
         let result = false;
-        for (const ust of ustensil) {
+        for (const ust of this.ustensils) {
             if (ust.toLowerCase().includes(ustensil.toLowerCase())) {
                 result = true;
             }

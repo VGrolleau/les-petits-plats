@@ -1,4 +1,4 @@
-import {createTag} from "./utils/CreateTag.js";
+import { createTag } from "./utils/CreateTag.js";
 
 export default class Search {
     constructor(data) {
@@ -17,27 +17,29 @@ export default class Search {
     }
 
     principalSearch(searchedString = null) {
-        let searchedArray;
+        let searchedArray = [];
         this.recipesSection.innerHTML = "";
         if (searchedString !== null) {
             this.searchedString = searchedString;
         }
 
         if (this.searchedString.length >= 3) {
-            searchedArray = this.recipes.filter(element => {
-                for (const ingredient of element.ingredients) {
-                    element.hasIngredient(ingredient.ingredient);
+            for (const element of this.recipes) {
+                if (element.name.toLowerCase().includes(this.searchedString) || element.description.toLowerCase().includes(this.searchedString) || element.hasIngredient(this.searchedString)) {
+                    searchedArray.push(element);
                 }
-
-                return element.name.toLowerCase().includes(this.searchedString) || element.description.toLowerCase().includes(this.searchedString);
-            });
+            }
         } else {
             searchedArray = this.recipes;
         }
 
-        searchedArray = searchedArray.filter(recipe => {
-            return recipe.containsIngredients(this.tagIngredients) && recipe.containsAppliances(this.tagAppliances) && recipe.containsUstensils(this.tagUstensils);
-        });
+        let newSearchedArray = [];
+        for (const recipe of searchedArray) {
+            if (recipe.containsIngredients(this.tagIngredients) && recipe.containsAppliances(this.tagAppliances) && recipe.containsUstensils(this.tagUstensils)) {
+                newSearchedArray.push(recipe);
+            }
+        }
+        searchedArray = newSearchedArray;
 
         if (searchedArray.length > 0) {
             this.recipesSection.classList.add("grid-cols-3", "gap-x-44", "gap-y-20");
@@ -95,6 +97,7 @@ export default class Search {
         }
     }
 
+    // todo: ajouter le vide de l'input select
     filterElement(className, element, ul, tag, color) {
         const li = document.createElement('li');
         li.classList.add(className);
@@ -134,19 +137,17 @@ export default class Search {
 
         let arrayFilteredIngredients = [...newFilteredIngredients];
         for (const element of arrayFilteredIngredients) {
-            const liIngredientSelect = document.createElement('li');
-            liIngredientSelect.classList.add("li-ingredient-select");
-            liIngredientSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
-            this.ulSelectIngredients.appendChild(liIngredientSelect);
+            this.filterElement("li-ingredient-select",element,this.ulSelectIngredients,this.tagIngredients,"#3282F7");
         }
     }
 
+    // todo: attribuer this.filterElement à appliance et ustensils
     searchAppliance(searchedString) {
         this.ulSelectAppliances.innerHTML = "";
         let newFilteredAppliances = new Set();
 
         if (searchedString.length > 0) {
-            for (const appliance of newFilteredAppliances) {
+            for (const appliance of this.filteredAppliances) {
                 if (appliance.toLowerCase().includes(searchedString)) {
                     newFilteredAppliances.add(appliance);
                 }
@@ -169,7 +170,7 @@ export default class Search {
         let newFilteredUstensils = new Set();
 
         if (searchedString.length > 0) {
-            for (const ustensil of newFilteredUstensils) {
+            for (const ustensil of this.filteredUstensils) {
                 if (ustensil.toLowerCase().includes(searchedString)) {
                     newFilteredUstensils.add(ustensil);
                 }
