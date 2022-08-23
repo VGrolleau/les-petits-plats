@@ -98,6 +98,7 @@ export default class Search {
         }
     }
 
+    // todo: revoir le clear de l'input
     filterElement(className, element, ul, tag, color) {
         const li = document.createElement('li');
         li.classList.add(className);
@@ -142,7 +143,6 @@ export default class Search {
         }
     }
 
-    // todo: attribuer this.filterElement à appliance et ustensils
     searchAppliance(searchedString) {
         this.ulSelectAppliances.innerHTML = "";
         let newFilteredAppliances = new Set();
@@ -159,10 +159,7 @@ export default class Search {
 
         let arrayFilteredAppliances = [...newFilteredAppliances];
         for (const element of arrayFilteredAppliances) {
-            const liApplianceSelect = document.createElement('li');
-            liApplianceSelect.classList.add("li-appliance-select");
-            liApplianceSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
-            this.ulSelectAppliances.appendChild(liApplianceSelect);
+            this.filterElement("li-appliance-select", element, this.ulSelectAppliances, this.tagAppliances, "#68D9A4");
         }
     }
 
@@ -182,10 +179,7 @@ export default class Search {
 
         let arrayFilteredUstensils = [...newFilteredUstensils];
         for (const element of arrayFilteredUstensils) {
-            const liUstensilSelect = document.createElement('li');
-            liUstensilSelect.classList.add("li-ustensil-select");
-            liUstensilSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
-            this.ulSelectUstensils.appendChild(liUstensilSelect);
+            this.filterElement("li-ustensil-select", element, this.ulSelectUstensils, this.tagUstensils, "#ED6454");
         }
     }
 }
