@@ -14,7 +14,7 @@ export default class Search {
         this.ulSelectIngredients = document.getElementById("ul-select-ingredients");
         this.ulSelectAppliances = document.getElementById("ul-select-appliance");
         this.ulSelectUstensils = document.getElementById("ul-select-ustensils");
-        this.inputSelect = document.querySelector(".input-select");
+        this.inputSelect = document.querySelectorAll(".input-select");
     }
 
     principalSearch(searchedString = null) {
@@ -98,7 +98,6 @@ export default class Search {
         }
     }
 
-    // todo: revoir le clear de l'input
     filterElement(className, element, ul, tag, color) {
         const li = document.createElement('li');
         li.classList.add(className);
@@ -106,13 +105,16 @@ export default class Search {
         ul.appendChild(li);
 
         li.addEventListener("click", () => {
-            this.inputSelect.value = "";
             tag.add(li.textContent);
             createTag(color, li.textContent, () => {
                 tag.delete(li.textContent);
                 this.principalSearch();
             });
             this.principalSearch();
+
+            for (const input of this.inputSelect) {
+                input.value = "";
+            }
         });
     }
 
