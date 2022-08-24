@@ -134,10 +134,7 @@ export default class Search {
 
         let arrayFilteredIngredients = [...newFilteredIngredients];
         arrayFilteredIngredients.forEach(element => {
-            const liIngredientSelect = document.createElement('li');
-            liIngredientSelect.classList.add("li-ingredient-select");
-            liIngredientSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
-            this.ulSelectIngredients.appendChild(liIngredientSelect);
+            this.filterElement("li-ingredient-select", element, this.ulSelectIngredients, this.tagIngredients, "#3282F7");
         });
     }
 
@@ -157,10 +154,7 @@ export default class Search {
 
         let arrayFilteredAppliances = [...newFilteredAppliances];
         arrayFilteredAppliances.forEach(element => {
-            const liApplianceSelect = document.createElement('li');
-            liApplianceSelect.classList.add("li-appliance-select");
-            liApplianceSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
-            this.ulSelectAppliances.appendChild(liApplianceSelect);
+            this.filterElement("li-appliance-select", element, this.ulSelectAppliances, this.tagAppliances, "#68D9A4");
         });
     }
 
@@ -180,10 +174,7 @@ export default class Search {
 
         let arrayFilteredUstensils = [...newFilteredUstensils];
         arrayFilteredUstensils.forEach(element => {
-            const liUstensilSelect = document.createElement('li');
-            liUstensilSelect.classList.add("li-ustensil-select");
-            liUstensilSelect.textContent = element.charAt(0).toUpperCase() + element.slice(1);
-            this.ulSelectUstensils.appendChild(liUstensilSelect);
+            this.filterElement("li-ustensil-select", element, this.ulSelectUstensils, this.tagUstensils, "#ED6454");
         });
     }
 }
