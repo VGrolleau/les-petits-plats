@@ -14,6 +14,7 @@ export default class Search {
         this.ulSelectIngredients = document.getElementById("ul-select-ingredients");
         this.ulSelectAppliances = document.getElementById("ul-select-appliance");
         this.ulSelectUstensils = document.getElementById("ul-select-ustensils");
+        this.inputSelect = document.querySelectorAll(".input-select");
     }
 
     principalSearch(searchedString = null) {
@@ -108,6 +109,10 @@ export default class Search {
                 this.principalSearch();
             });
             this.principalSearch();
+
+            this.inputSelect.forEach(input => {
+                input.value = "";
+            });
         });
     }
 
