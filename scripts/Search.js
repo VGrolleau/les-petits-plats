@@ -96,7 +96,7 @@ export default class Search {
         });
     }
 
-    filterElement(className, element, ul, tag, color) {
+    filterElement(className, element, ul, tag, color, input = null) {
         const li = document.createElement('li');
         li.classList.add(className);
         li.textContent = element.charAt(0).toUpperCase() + element.slice(1);
@@ -110,9 +110,9 @@ export default class Search {
             });
             this.principalSearch();
 
-            this.inputSelect.forEach(input => {
+            if (input !== null) {
                 input.value = "";
-            });
+            }
         });
     }
 
@@ -123,7 +123,7 @@ export default class Search {
         this.ulSelectUstensils.innerHTML = "";
     }
 
-    searchIngredient(searchedString) {
+    searchIngredient(searchedString, input) {
         this.ulSelectIngredients.innerHTML = "";
         let newFilteredIngredients = new Set();
 
@@ -139,11 +139,11 @@ export default class Search {
 
         let arrayFilteredIngredients = [...newFilteredIngredients];
         arrayFilteredIngredients.forEach(element => {
-            this.filterElement("li-ingredient-select", element, this.ulSelectIngredients, this.tagIngredients, "#3282F7");
+            this.filterElement("li-ingredient-select", element, this.ulSelectIngredients, this.tagIngredients, "#3282F7", input);
         });
     }
 
-    searchAppliance(searchedString) {
+    searchAppliance(searchedString, input) {
         this.ulSelectAppliances.innerHTML = "";
         let newFilteredAppliances = new Set();
 
@@ -159,11 +159,11 @@ export default class Search {
 
         let arrayFilteredAppliances = [...newFilteredAppliances];
         arrayFilteredAppliances.forEach(element => {
-            this.filterElement("li-appliance-select", element, this.ulSelectAppliances, this.tagAppliances, "#68D9A4");
+            this.filterElement("li-appliance-select", element, this.ulSelectAppliances, this.tagAppliances, "#68D9A4", input);
         });
     }
 
-    searchUstensil(searchedString) {
+    searchUstensil(searchedString, input) {
         this.ulSelectUstensils.innerHTML = "";
         let newFilteredUstensils = new Set();
 
@@ -179,7 +179,7 @@ export default class Search {
 
         let arrayFilteredUstensils = [...newFilteredUstensils];
         arrayFilteredUstensils.forEach(element => {
-            this.filterElement("li-ustensil-select", element, this.ulSelectUstensils, this.tagUstensils, "#ED6454");
+            this.filterElement("li-ustensil-select", element, this.ulSelectUstensils, this.tagUstensils, "#ED6454", input);
         });
     }
 }

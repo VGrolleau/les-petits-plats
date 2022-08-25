@@ -41,13 +41,13 @@ customSelects.forEach(select => {
 
     inputSearch.addEventListener("input", () => {
         if (select.id === "custom-select-ingredients") {
-            search.searchIngredient(inputSearch.value.toLowerCase());
+            search.searchIngredient(inputSearch.value.toLowerCase(), inputSearch);
         }
         if (select.id === "custom-select-appliances") {
-            search.searchAppliance(inputSearch.value.toLowerCase());
+            search.searchAppliance(inputSearch.value.toLowerCase(), inputSearch);
         }
         if (select.id === "custom-select-ustensils") {
-            search.searchUstensil(inputSearch.value.toLowerCase());
+            search.searchUstensil(inputSearch.value.toLowerCase(), inputSearch);
         }
     });
 });
