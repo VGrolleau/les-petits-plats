@@ -5,9 +5,9 @@ import Search from "./Search.js";
 document.getElementById("search-bar").value = "";
 const readyRecipes = [];
 
-recipes.forEach(recipe => {
+for (const recipe of recipes) {
     readyRecipes.push(new Recipe(recipe));
-})
+}
 const search = new Search(readyRecipes);
 search.principalSearch();
 

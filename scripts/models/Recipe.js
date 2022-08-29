@@ -42,7 +42,7 @@ export default class Recipe {
         const ingredients = document.createElement('ul');
         ingredients.classList.add("ingredients");
 
-        this.ingredients.forEach(ingredient => {
+        for (const ingredient of this.ingredients) {
             let ingredientLi = document.createElement('li');
             if (!ingredient.unit) {
                 ingredientLi.innerHTML = `<span class="ingredient">${ingredient.ingredient}</span> : <span class="quantity">${ingredient.quantity}</span>`;
@@ -54,7 +54,7 @@ export default class Recipe {
                 ingredientLi.innerHTML = `<span class="ingredient">${ingredient.ingredient}</span> : <span class="quantity">${ingredient.quantity}</span> <span class="unit">${ingredient.unit}</span>`;
             }
             ingredients.appendChild(ingredientLi);
-        });
+        }
 
         const description = document.createElement('p');
         description.classList.add("description");

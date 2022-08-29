@@ -78,9 +78,9 @@ export default class Search {
     displayData(recipes) {
         this.clearDOM();
 
-        recipes.forEach(recipe => {
+        for (const recipe of recipes) {
             this.recipesSection.appendChild(recipe.getRecipe());
-        });
+        }
 
         const filteredIngredientsArray = [...this.filteredIngredients];
         for (const element of filteredIngredientsArray) {
