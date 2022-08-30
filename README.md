@@ -27,9 +27,8 @@ Sandra, cheffe de projet, est en charge de la digitalisation de l'entreprise ave
 En fin de matinée, vous recevez une notification Slack de Jean-Baptiste, votre Lead Developer : 
 
 | JB | Salut ! Comme tu as pu le voir, la recherche est une fonctionnalité très importante pour l’équipe et on compte sur toi pour la développer d’une manière optimale. |
-
-Dans notre équipe, pour tout algorithme important qu’on développe, on a pour habitude d’en faire deux implémentations différentes pour pouvoir comparer leurs performances et choisir la meilleure. Il faudra donc que tu fasses de même ! Pour ça il faudra que tu crées un document de comparaison qu’on appelle “fiche d’investigation de fonctionnalité”. Nous avons récemment fait ça pour la fonctionnalité "connexion / inscription" dont voici le résultat. Donc réutilise directement le même modèle de document.
-
+| | Dans notre équipe, pour tout algorithme important qu’on développe, on a pour habitude d’en faire deux implémentations différentes pour pouvoir comparer leurs performances et choisir la meilleure. Il faudra donc que tu fasses de même ! Pour ça il faudra que tu crées un document de comparaison qu’on appelle “fiche d’investigation de fonctionnalité”. Nous avons récemment fait ça pour la fonctionnalité "connexion / inscription" dont voici le résultat. Donc réutilise directement le même modèle de document. |
+| --- | |
 Vous
 	
 
