@@ -26,7 +26,7 @@ Sandra, cheffe de projet, est en charge de la digitalisation de l'entreprise ave
 
 En fin de matinée, vous recevez une notification Slack de Jean-Baptiste, votre Lead Developer : 
 
-| **JB** |
+| JB |
 	
 
 Salut ! Comme tu as pu le voir, la recherche est une fonctionnalité très importante pour l’équipe et on compte sur toi pour la développer d’une manière optimale. 
